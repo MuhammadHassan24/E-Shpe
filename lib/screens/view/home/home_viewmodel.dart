@@ -1,0 +1,53 @@
+import 'package:ecommerceapp/app/app.locator.dart';
+import 'package:ecommerceapp/app/app.router.dart';
+import 'package:ecommerceapp/data/product/product_detail.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:ecommerceapp/data/model/product_model.dart';
+
+class HomeViewmodel extends BaseViewModel {
+  final navigate = locator<NavigationService>();
+
+  CarouselController controllerBanner = CarouselController();
+  TextEditingController fieldController = TextEditingController();
+
+  List<Product> filteredProducts = [];
+
+  HomeViewmodel() {
+    filteredProducts = allProduct; // Set default products
+  }
+
+  navigateToCategoryView(List<Product> category, String title) {
+    return navigate.navigateTo(Routes.categoryView,
+        arguments: CategoryViewArguments(data: category, title: title));
+  }
+
+  @override
+  dispose() {
+    fieldController.dispose;
+    super.dispose();
+  }
+
+// navigate to addcartview
+  navigateToAddcart() async {
+    await navigate.navigateTo(Routes.addcartView);
+    rebuildUi();
+  }
+
+// add product into cart
+  void addToCart(Product data) {
+    if (addCartItems.contains(data)) {
+      print("is already in list");
+    } else {
+      addCartItems.add(data);
+      rebuildUi();
+    }
+  }
+
+// navigate to detailview
+  navigateToDetail(Product data) {
+    return navigate.navigateTo(Routes.detailView,
+        arguments: DetailViewArguments(data: data));
+  }
+}
