@@ -91,6 +91,12 @@ class SignUpView extends StatelessWidget {
           ),
           verticalspaceBetween,
           AppTextfield(
+            controller: viewModel.userNameController,
+            hintText: "Username",
+            width: double.infinity,
+          ),
+          verticalspaceBetween,
+          AppTextfield(
             controller: viewModel.emailController,
             hintText: "Email",
             width: double.infinity,
@@ -108,12 +114,6 @@ class SignUpView extends StatelessWidget {
             hintText: "Phone Number",
             width: double.infinity,
             obscureText: true,
-          ),
-          verticalspaceBetween,
-          AppTextfield(
-            controller: viewModel.userNameController,
-            hintText: "Username",
-            width: double.infinity,
           ),
           verticalSpaceLarge,
           AppButton(
