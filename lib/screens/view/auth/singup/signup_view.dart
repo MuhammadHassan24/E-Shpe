@@ -4,7 +4,7 @@ import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/app_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:ecommerceapp/screens/auth/singup/signup_viewmodel.dart';
+import 'package:ecommerceapp/screens/view/auth/singup/signup_viewmodel.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});

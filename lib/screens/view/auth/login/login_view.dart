@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/resources/ui_helper.dart';
-import 'package:ecommerceapp/screens/auth/login/login_viewmodel.dart';
+import 'package:ecommerceapp/screens/view/auth/login/login_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/app_textfield.dart';

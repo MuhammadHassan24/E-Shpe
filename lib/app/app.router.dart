@@ -6,11 +6,11 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:ecommerceapp/data/model/product_model.dart' as _i12;
-import 'package:ecommerceapp/screens/auth/login/login_view.dart' as _i6;
-import 'package:ecommerceapp/screens/auth/singup/signup_view.dart' as _i8;
 import 'package:ecommerceapp/screens/bottomnavigation/navigationbar_view.dart'
     as _i5;
 import 'package:ecommerceapp/screens/view/addcart/addcart_view.dart' as _i3;
+import 'package:ecommerceapp/screens/view/auth/login/login_view.dart' as _i6;
+import 'package:ecommerceapp/screens/view/auth/singup/signup_view.dart' as _i8;
 import 'package:ecommerceapp/screens/view/category/category_view.dart' as _i9;
 import 'package:ecommerceapp/screens/view/checkout/checkout_view.dart' as _i10;
 import 'package:ecommerceapp/screens/view/detail/detail_view.dart' as _i7;
