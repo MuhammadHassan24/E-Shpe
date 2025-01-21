@@ -2,6 +2,7 @@ import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/screens/view/checkout/checkout_viewmodel.dart';
+import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/product_tile.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class CheckOutView extends StatelessWidget {
         viewModelBuilder: () => CheckoutViewModel(),
         builder: (_, viewModel, child) {
           return Scaffold(
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
             appBar: AppBar(
               centerTitle: true,
               title: const AppText(
@@ -98,6 +101,8 @@ class CheckOutView extends StatelessWidget {
                 ),
               ),
             ),
+            floatingActionButton: AppButton(
+                onTap: () {}, text: "Continue to payment", width: 280),
           );
         });
   }
