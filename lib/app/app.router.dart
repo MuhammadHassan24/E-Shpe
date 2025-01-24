@@ -6,16 +6,16 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:ecommerceapp/data/model/product_model.dart' as _i12;
-import 'package:ecommerceapp/screens/bottomnavigation/navigationbar_view.dart'
+import 'package:ecommerceapp/view/bottomnavigation/navigationbar_view.dart'
     as _i5;
-import 'package:ecommerceapp/screens/view/addcart/addcart_view.dart' as _i3;
-import 'package:ecommerceapp/screens/view/auth/login/login_view.dart' as _i6;
-import 'package:ecommerceapp/screens/view/auth/singup/signup_view.dart' as _i8;
-import 'package:ecommerceapp/screens/view/category/category_view.dart' as _i9;
-import 'package:ecommerceapp/screens/view/checkout/checkout_view.dart' as _i10;
-import 'package:ecommerceapp/screens/view/detail/detail_view.dart' as _i7;
-import 'package:ecommerceapp/screens/view/onboard/onboard_view.dart' as _i2;
-import 'package:ecommerceapp/screens/view/splash/splash_view.dart' as _i4;
+import 'package:ecommerceapp/view/screens/addcart/addcart_view.dart' as _i3;
+import 'package:ecommerceapp/view/screens/auth/login/login_view.dart' as _i6;
+import 'package:ecommerceapp/view/screens/auth/singup/signup_view.dart' as _i8;
+import 'package:ecommerceapp/view/screens/category/category_view.dart' as _i9;
+import 'package:ecommerceapp/view/screens/checkout/checkout_view.dart' as _i10;
+import 'package:ecommerceapp/view/screens/detail/detail_view.dart' as _i7;
+import 'package:ecommerceapp/view/screens/onboard/onboard_view.dart' as _i2;
+import 'package:ecommerceapp/view/screens/splash/splash_view.dart' as _i4;
 import 'package:flutter/material.dart' as _i11;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
