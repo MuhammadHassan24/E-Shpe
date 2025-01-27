@@ -10,6 +10,7 @@ class AppTextfield extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final Widget? suffixIcon;
   final Widget? preffixicon;
+  final String? Function(String?)? validator;
   final bool obscureText;
   const AppTextfield(
       {super.key,
@@ -21,7 +22,8 @@ class AppTextfield extends StatelessWidget {
       this.contentPadding,
       this.suffixIcon,
       this.obscureText = false,
-      this.preffixicon});
+      this.preffixicon,
+      this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class AppTextfield extends StatelessWidget {
       width: width,
       child: TextFormField(
         onTapOutside: (event) => context.hideKeyboard(),
+        validator: validator,
         obscureText: obscureText,
         focusNode: focusNode,
         controller: controller,

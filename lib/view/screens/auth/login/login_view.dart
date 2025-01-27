@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/resources/ui_helper.dart';
+import 'package:ecommerceapp/resources/validate.dart';
 import 'package:ecommerceapp/view/screens/auth/login/login_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
@@ -31,7 +32,7 @@ class LoginView extends StatelessWidget {
                 ),
                 verticalSpaceTiny,
                 AppText(
-                  text: viewModel.text,
+                  text: "Discover Limitless Choices And Unmatched\nConvenience",
                   fontSize: 16,
                   color: Colors.black38,
                 ),
@@ -90,11 +91,21 @@ class LoginView extends StatelessWidget {
           children: [
             AppTextfield(
                 width: double.infinity,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return Validate.validateEmail(value.toString());
+                  }
+                },
                 controller: viewModel.emailController,
                 hintText: "Email"),
             verticalspaceBetween,
             AppTextfield(
               width: double.infinity,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return Validate.validatePassword(value.toString());
+                }
+              },
               controller: viewModel.passwordController,
               obscureText: viewModel.visibility,
               hintText: "Password",
@@ -123,7 +134,7 @@ class LoginView extends StatelessWidget {
             ),
             AppButton(
                 onTap: () async {
-                  await viewModel.login(viewModel.emailController.text,
+                  await viewModel.submit(viewModel.emailController.text,
                       viewModel.passwordController.text);
                 },
                 text: "Login",

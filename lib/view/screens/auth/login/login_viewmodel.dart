@@ -7,6 +7,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 class LoginViewModel extends BaseViewModel {
   final navigator = locator<NavigationService>();
+  final _firebaseAuth = locator<FirebaseAuthServices>();
 
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
@@ -14,14 +15,21 @@ class LoginViewModel extends BaseViewModel {
 
   bool visibility = true;
 
-  final text = "Discover Limitless Choices And Unmatched\nConvenience";
-
   void toggleVisibility() {
     visibility = !visibility;
     rebuildUi();
   }
 
-  login(email, password) async {}
+  submit(email, password) async {
+    if (formKey.currentState!.validate()) {
+      await login(email, password);
+      navigator.navigateTo(Routes.navigationBarView);
+    }
+  }
+
+  login(email, password) async {
+    await _firebaseAuth.login(email, password);
+  }
 
   navigateToSignUp() {
     return navigator.navigateTo(Routes.signUpView);
