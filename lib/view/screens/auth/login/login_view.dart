@@ -95,6 +95,7 @@ class LoginView extends StatelessWidget {
                   if (value!.isEmpty) {
                     return Validate.validateEmail(value.toString());
                   }
+                  return null;
                 },
                 controller: viewModel.emailController,
                 hintText: "Email"),
@@ -105,6 +106,7 @@ class LoginView extends StatelessWidget {
                 if (value!.isEmpty) {
                   return Validate.validatePassword(value.toString());
                 }
+                return null;
               },
               controller: viewModel.passwordController,
               obscureText: viewModel.visibility,

@@ -2,9 +2,12 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerceapp/data/model/user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseDbServices {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  final _auth = FirebaseAuth.instance;
 
   final _collection = "users";
 
@@ -14,7 +17,8 @@ class FirebaseDbServices {
     try {
       await _firestore
           .collection(_collection)
-          .add(data as Map<String, dynamic>);
+          .doc(_auth.currentUser!.uid)
+          .set(data.toMap());
     } on FirebaseException catch (e) {
       log(e.toString());
     }
@@ -37,9 +41,5 @@ class FirebaseDbServices {
     } on FirebaseException catch (e) {
       log(e.toString());
     }
-  }
-
-  Stream<QuerySnapshot> getData() {
-    return _firestore.collection(_collection).snapshots();
   }
 }

@@ -7,7 +7,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 class LoginViewModel extends BaseViewModel {
   final navigator = locator<NavigationService>();
-  final _firebaseAuth = locator<FirebaseAuthServices>();
+  final _firebaseAuth = FirebaseAuthServices();
 
   final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();

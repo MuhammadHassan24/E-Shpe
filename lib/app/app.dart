@@ -27,6 +27,5 @@ import 'package:stacked_services/stacked_services.dart';
 ], dependencies: [
   Singleton(classType: NavigationService),
   Singleton(classType: FirebaseDbServices),
-  LazySingleton(classType: FirebaseAuthServices)
 ])
 class App {}

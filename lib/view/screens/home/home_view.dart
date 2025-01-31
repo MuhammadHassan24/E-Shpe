@@ -6,7 +6,6 @@ import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/view/screens/home/home_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_snackbar.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
-import 'package:ecommerceapp/widget/app_textfield.dart';
 import 'package:ecommerceapp/widget/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';

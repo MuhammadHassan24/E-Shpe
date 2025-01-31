@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/resources/ui_helper.dart';
+import 'package:ecommerceapp/resources/validate.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/app_textfield.dart';
@@ -82,9 +83,16 @@ class SignUpView extends StatelessWidget {
 
   Widget _buildForm(SignUpViewmodel viewModel) {
     return Form(
+      key: viewModel.formKey,
       child: Column(
         children: [
           AppTextfield(
+            validator: (value) {
+              if (value!.isEmpty) {
+                return Validate.validateName(value.toString());
+              }
+              return null;
+            },
             controller: viewModel.nameController,
             hintText: "Name",
             width: double.infinity,
@@ -97,12 +105,24 @@ class SignUpView extends StatelessWidget {
           ),
           verticalspaceBetween,
           AppTextfield(
+            validator: (value) {
+              if (value!.isEmpty) {
+                return Validate.validateEmail(value.toString());
+              }
+              return null;
+            },
             controller: viewModel.emailController,
             hintText: "Email",
             width: double.infinity,
           ),
           verticalspaceBetween,
           AppTextfield(
+            validator: (value) {
+              if (value!.isEmpty) {
+                return Validate.validatePassword(value.toString());
+              }
+              return null;
+            },
             controller: viewModel.passwordController,
             hintText: "Password",
             width: double.infinity,
@@ -110,17 +130,25 @@ class SignUpView extends StatelessWidget {
           ),
           verticalspaceBetween,
           AppTextfield(
+            validator: (value) {
+              if (value!.isEmpty) {
+                return Validate.validatePhone(value.toString());
+              }
+              return null;
+            },
             controller: viewModel.numberController,
             hintText: "Phone Number",
             width: double.infinity,
-            obscureText: true,
           ),
           verticalSpaceLarge,
           AppButton(
             height: 55,
             width: double.infinity,
             text: "Create Account",
-            onTap: () {},
+            onTap: () async {
+              await viewModel.submit(viewModel.emailController.text.toString(),
+                  viewModel.passwordController.text.toString());
+            },
           ),
         ],
       ),
