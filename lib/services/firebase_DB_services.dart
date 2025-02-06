@@ -42,4 +42,23 @@ class FirebaseDbServices {
       log(e.toString());
     }
   }
+
+  Future getUserData() async {
+    try {
+      final DocumentSnapshot documentSnapshot = await _firestore
+          .collection(_collection)
+          .doc(_auth.currentUser!.uid)
+          .get();
+      final data = documentSnapshot.data();
+      log(data.toString());
+      if (data != null) {
+        return UserModel.fromMap(data as Map<String, dynamic>);
+      } else {
+        log('Document data is null');
+        return null;
+      }
+    } on FirebaseException catch (e) {
+      log(e.toString());
+    }
+  }
 }

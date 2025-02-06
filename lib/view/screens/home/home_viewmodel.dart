@@ -32,18 +32,9 @@ class HomeViewmodel extends BaseViewModel {
 // navigate to addcartview
   navigateToAddcart() async {
     await navigate.navigateTo(Routes.addcartView);
-    rebuildUi();
   }
 
 // add product into cart
-  void addToCart(Product data) {
-    if (addCartItems.contains(data)) {
-      print("is already in list");
-    } else {
-      addCartItems.add(data);
-      rebuildUi();
-    }
-  }
 
 // navigate to detailview
   navigateToDetail(Product data) {

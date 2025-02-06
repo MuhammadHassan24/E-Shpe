@@ -15,7 +15,9 @@ class AddcartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => AddcartViewmodel(),
-        onViewModelReady: (viewModel) => viewModel.calculateTotalPrice(),
+        onViewModelReady: (viewModel) {
+          viewModel.calculateTotalPrice();
+        },
         builder: (_, viewModel, child) {
           return Scaffold(
             floatingActionButtonLocation:

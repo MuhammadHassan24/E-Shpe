@@ -145,10 +145,18 @@ class HomeView extends StatelessWidget {
                         return ProductCard(
                           onTap: () => viewModel.navigateToDetail(data),
                           onTapToAdd: () {
-                            viewModel.addToCart(data);
-                            AppSnackbar.snackBar(
-                                context: context,
-                                message: "Add To Cart Successfully");
+                            if (addCartItems.contains(data)) {
+                              AppSnackbar.snackBar(
+                                  context: context, message: "Already in Cart");
+                            } else {
+                              addCartItems.add(data);
+
+                              AppSnackbar.snackBar(
+                                  context: context,
+                                  message: "Add To Cart Successfully");
+
+                              viewModel.rebuildUi();
+                            }
                           },
                           data: data,
                         );

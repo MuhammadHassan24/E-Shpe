@@ -16,7 +16,6 @@ class OnboardView extends StatelessWidget {
     final con = PageController();
 
     return ViewModelBuilder.reactive(
-        onViewModelReady: (viewModel) => viewModel.initialise(),
         viewModelBuilder: () => OnboardViewmodel(),
         builder: (_, viewModel, child) {
           return SafeArea(
@@ -85,7 +84,7 @@ class OnboardView extends StatelessWidget {
                             ? AppButton(
                                 width: 115,
                                 onTap: () {
-                                  viewModel.navigateToNavBar();
+                                  viewModel.navigateToLogin();
                                 },
                                 text: "Get Started",
                               )

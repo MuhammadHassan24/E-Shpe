@@ -22,11 +22,11 @@ import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i13;
 
 class Routes {
-  static const onboardView = '/';
+  static const onboardView = '/onboard-view';
 
   static const addcartView = '/addcart-view';
 
-  static const splashView = '/splash-view';
+  static const splashView = '/';
 
   static const navigationBarView = '/navigation-bar-view';
 

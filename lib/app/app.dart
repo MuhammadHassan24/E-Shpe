@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/services/firebase_DB_services.dart';
-import 'package:ecommerceapp/services/firebaseauth_services.dart';
 import 'package:ecommerceapp/view/screens/auth/login/login_view.dart';
 import 'package:ecommerceapp/view/screens/auth/singup/signup_view.dart';
 import 'package:ecommerceapp/view/bottomnavigation/navigationbar_view.dart';
@@ -13,10 +12,11 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 @StackedApp(routes: [
-  MaterialRoute(page: OnboardView, initial: true),
+  MaterialRoute(page: OnboardView),
   MaterialRoute(page: AddcartView),
   MaterialRoute(
     page: SplashView,
+    initial: true,
   ),
   MaterialRoute(page: NavigationBarView),
   MaterialRoute(page: LoginView),
