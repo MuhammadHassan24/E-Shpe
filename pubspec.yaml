@@ -42,6 +42,9 @@ dependencies:
   firebase_auth: ^5.4.1
   cloud_firestore: ^5.6.2
   shared_preferences: ^2.5.1
+  skeletonizer: ^1.4.3
+  stacked_shared: any
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:

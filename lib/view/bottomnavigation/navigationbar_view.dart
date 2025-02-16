@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:ecommerceapp/data/product/product_detail.dart';
 import 'package:ecommerceapp/view/bottomnavigation/navigationbar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -49,7 +50,7 @@ class NavigationBarView extends StatelessWidget {
                 labelBehavior:
                     NavigationDestinationLabelBehavior.onlyShowSelected,
                 selectedIndex: viewModel.currentIndex,
-                destinations: const [
+                destinations: [
                   NavigationDestination(
                       icon: Icon(Icons.home_outlined),
                       selectedIcon: Icon(Icons.home_rounded),
@@ -59,13 +60,25 @@ class NavigationBarView extends StatelessWidget {
                       icon: Icon(Icons.search_outlined),
                       label: "Search"),
                   NavigationDestination(
+                      selectedIcon: Icon(Icons.shopping_cart_rounded),
+                      icon: Stack(children: [
+                        Icon(Icons.shopping_cart_outlined),
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: CircleAvatar(
+                            radius: 5,
+                            backgroundColor: addCartItems.isEmpty
+                                ? Colors.transparent
+                                : Colors.red,
+                          ),
+                        ),
+                      ]),
+                      label: "Cart"),
+                  NavigationDestination(
                       selectedIcon: Icon(Icons.favorite_rounded),
                       icon: Icon(Icons.favorite_border_outlined),
                       label: "Wishlist"),
-                  NavigationDestination(
-                      selectedIcon: Icon(Icons.person),
-                      icon: Icon(Icons.person_outline),
-                      label: "Account"),
                 ],
                 onDestinationSelected: (newIndex) {
                   viewModel.setIndex(newIndex);

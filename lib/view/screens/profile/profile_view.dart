@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:ecommerceapp/data/model/user_model.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/view/screens/profile/profile_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import 'package:stacked/stacked.dart';
 
 class ProfileView extends StatelessWidget {
@@ -14,9 +17,11 @@ class ProfileView extends StatelessWidget {
         MediaQuery.of(context).orientation == Orientation.landscape;
 
     return ViewModelBuilder.reactive(
-        viewModelBuilder: () => ProfileViewmodel(),
+        viewModelBuilder: () => ProfileViewModel(),
+        fireOnViewModelReadyOnce: true,
         builder: (_, viewModel, child) {
-          final data = viewModel.data;
+          UserModel? data = viewModel.data;
+
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
@@ -30,107 +35,162 @@ class ProfileView extends StatelessWidget {
               physics: isLandscape
                   ? const AlwaysScrollableScrollPhysics()
                   : const NeverScrollableScrollPhysics(),
-              child: viewModel.isBusy
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        verticalSpaceMedium,
-                        Center(
-                          child: Stack(
-                            children: [
-                              CircleAvatar(
-                                radius: 50,
+              child: Skeletonizer(
+                enabled: viewModel.isBusy,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    verticalSpaceMedium,
+                    Center(
+                      child: Stack(
+                        children: [
+                          CircleAvatar(
+                            radius: 50,
+                            backgroundImage: viewModel.image == null
+                                ? AssetImage("asset/images/filter.png")
+                                : FileImage(viewModel.image!),
+                          ),
+                          Positioned(
+                            right: 0,
+                            bottom: 0,
+                            child: CircleAvatar(
+                              radius: 15,
+                              backgroundColor: Colors.amber,
+                              child: GestureDetector(
+                                onTap: () async {
+                                  await viewModel.addImage();
+                                },
                                 child: Icon(
-                                  Icons.image,
-                                  size: 40,
+                                  Icons.camera_alt,
+                                  size: 18,
                                 ),
                               ),
-                              Positioned(
-                                right: 0,
-                                bottom: 0,
-                                child: CircleAvatar(
-                                  radius: 15,
-                                  backgroundColor: Colors.amber,
-                                  child: Icon(
-                                    Icons.camera_alt,
-                                    size: 18,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        verticalSpaceSmall,
-                        Center(
-                          child: AppText(
-                            text: data!.name,
-                            fontSize: 20,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    verticalSpaceSmall,
+                    Center(
+                      child: AppText(
+                        text: data?.name ?? 'Loading...',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    verticalSpaceSmall,
+                    const Divider(
+                      thickness: 1.5,
+                      indent: 20,
+                      endIndent: 20,
+                    ),
+                    verticalSpaceSmall,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(
+                            text: "Profile Information",
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
-                        verticalSpaceSmall,
-                        Divider(
-                          thickness: 1.5,
-                          indent: 20,
-                          endIndent: 20,
-                        ),
-                        verticalSpaceSmall,
-                        Padding(
-                          padding: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          verticalSpaceMedium,
+                          Row(
                             children: [
+                              const AppText(
+                                text: "Name",
+                                fontSize: 16,
+                              ),
+                              const SizedBox(
+                                width: 94,
+                              ),
                               AppText(
-                                text: "Profile Information",
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                text: data?.name ?? 'Loading...',
+                                fontSize: 16,
                               ),
-                              verticalSpaceMedium,
-                              Row(
-                                children: [
-                                  AppText(
-                                    text: "Name",
-                                    fontSize: 16,
-                                  ),
-                                  SizedBox(
-                                    width: 94,
-                                  ),
-                                  AppText(
-                                    text: data.name,
-                                    fontSize: 16,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  AppText(
-                                    text: "UserName",
-                                    fontSize: 16,
-                                  ),
-                                  SizedBox(
-                                    width: 60,
-                                  ),
-                                  AppText(
-                                    text: data.username,
-                                    fontSize: 16,
-                                  ),
-                                ],
-                              ),
-                              verticalSpaceMedium,
-                              Divider(
-                                thickness: 1.5,
-                              )
                             ],
                           ),
-                        ),
-                      ],
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              const AppText(
+                                text: "UserName",
+                                fontSize: 16,
+                              ),
+                              const SizedBox(
+                                width: 60,
+                              ),
+                              AppText(
+                                text: data?.username ?? 'Loading...',
+                                fontSize: 16,
+                              ),
+                            ],
+                          ),
+                          verticalSpaceMedium,
+                          const Divider(
+                            thickness: 1.5,
+                          ),
+                          verticalSpaceSmall,
+                        ],
+                      ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: "Personal Information",
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          verticalSpaceMedium,
+                          Row(
+                            children: [
+                              const AppText(
+                                text: "Email",
+                                fontSize: 16,
+                              ),
+                              const SizedBox(
+                                width: 94,
+                              ),
+                              AppText(
+                                text: data?.email ?? 'Loading...',
+                                fontSize: 16,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            children: [
+                              const AppText(
+                                text: "Phone Number",
+                                fontSize: 16,
+                              ),
+                              const SizedBox(
+                                width: 25,
+                              ),
+                              AppText(
+                                text: data?.number ?? 'Loading...',
+                                fontSize: 16,
+                              ),
+                            ],
+                          ),
+                          verticalSpaceMedium,
+                          const Divider(
+                            thickness: 1.5,
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           );
         });

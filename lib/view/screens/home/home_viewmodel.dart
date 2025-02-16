@@ -30,11 +30,9 @@ class HomeViewmodel extends BaseViewModel {
   }
 
 // navigate to addcartview
-  navigateToAddcart() async {
-    await navigate.navigateTo(Routes.addcartView);
+  navigateToProfile() {
+    navigate.navigateTo(Routes.profileView);
   }
-
-// add product into cart
 
 // navigate to detailview
   navigateToDetail(Product data) {

@@ -38,9 +38,9 @@ class SearchView extends StatelessWidget {
                               return [
                                 PopupMenuItem(
                                   onTap: () => viewModel.lowToHigh(),
-                                  child: Text("Low to high"),
+                                  child: const Text("Low to high"),
                                 ),
-                                PopupMenuItem(
+                                const PopupMenuItem(
                                   child: Text("High to low"),
                                 )
                               ];

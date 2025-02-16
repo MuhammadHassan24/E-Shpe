@@ -31,7 +31,7 @@ class LoginView extends StatelessWidget {
                   textAlign: TextAlign.start,
                 ),
                 verticalSpaceTiny,
-                AppText(
+                const AppText(
                   text: "Discover Limitless Choices And Unmatched\nConvenience",
                   fontSize: 16,
                   color: Colors.black38,

@@ -7,6 +7,7 @@ import 'package:ecommerceapp/view/screens/category/category_view.dart';
 import 'package:ecommerceapp/view/screens/checkout/checkout_view.dart';
 import 'package:ecommerceapp/view/screens/detail/detail_view.dart';
 import 'package:ecommerceapp/view/screens/onboard/onboard_view.dart';
+import 'package:ecommerceapp/view/screens/profile/profile_view.dart';
 import 'package:ecommerceapp/view/screens/splash/splash_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -23,7 +24,8 @@ import 'package:stacked_services/stacked_services.dart';
   MaterialRoute(page: DetailView),
   MaterialRoute(page: SignUpView),
   MaterialRoute(page: CategoryView),
-  MaterialRoute(page: CheckOutView)
+  MaterialRoute(page: CheckOutView),
+  MaterialRoute(page: ProfileView)
 ], dependencies: [
   Singleton(classType: NavigationService),
   Singleton(classType: FirebaseDbServices),

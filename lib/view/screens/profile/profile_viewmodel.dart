@@ -1,11 +1,16 @@
 import 'dart:developer';
+import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:ecommerceapp/data/model/user_model.dart';
 import 'package:ecommerceapp/services/firebase_DB_services.dart';
+import 'package:ecommerceapp/utility/utility.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:stacked/stacked.dart';
 
-class ProfileViewmodel extends FutureViewModel<UserModel> {
+class ProfileViewModel extends FutureViewModel<UserModel> {
   final _DB = locator<FirebaseDbServices>();
 
   @override
@@ -15,6 +20,19 @@ class ProfileViewmodel extends FutureViewModel<UserModel> {
 
   @override
   void onError(error) {
-    return log("Error: $error");
+    log("Error in ProfileViewModel: $error");
+  }
+
+  File? image;
+
+  Future addImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? img = await picker.pickImage(
+      source: ImageSource.gallery,
+    );
+    if (img == null) return null;
+
+    image = File(img.path);
+    rebuildUi();
   }
 }

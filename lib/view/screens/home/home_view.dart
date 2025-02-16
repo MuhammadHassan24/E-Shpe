@@ -42,26 +42,12 @@ class HomeView extends StatelessWidget {
               actions: [
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
-                  child: Stack(
-                    children: [
-                      GestureDetector(
-                        onTap: viewModel.navigateToAddcart,
-                        child: const Icon(
-                          Icons.shopping_cart_rounded,
-                          size: 28,
-                        ),
-                      ),
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: CircleAvatar(
-                          radius: 5,
-                          backgroundColor: addCartItems.isNotEmpty
-                              ? Colors.red
-                              : Colors.transparent,
-                        ),
-                      )
-                    ],
+                  child: GestureDetector(
+                    onTap: () => viewModel.navigateToProfile(),
+                    child: const Icon(
+                      Icons.person_rounded,
+                      size: 28,
+                    ),
                   ),
                 )
               ],
@@ -144,18 +130,16 @@ class HomeView extends StatelessWidget {
                         Product data = allProduct[index];
                         return ProductCard(
                           onTap: () => viewModel.navigateToDetail(data),
-                          onTapToAdd: () {
+                          onTapToAdd: () async {
                             if (addCartItems.contains(data)) {
                               AppSnackbar.snackBar(
                                   context: context, message: "Already in Cart");
                             } else {
                               addCartItems.add(data);
-
+                              viewModel.rebuildUi();
                               AppSnackbar.snackBar(
                                   context: context,
                                   message: "Add To Cart Successfully");
-
-                              viewModel.rebuildUi();
                             }
                           },
                           data: data,

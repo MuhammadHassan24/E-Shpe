@@ -102,6 +102,12 @@ class SignUpView extends StatelessWidget {
             controller: viewModel.userNameController,
             hintText: "Username",
             width: double.infinity,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Field is required";
+              }
+              return null;
+            },
           ),
           verticalspaceBetween,
           AppTextfield(

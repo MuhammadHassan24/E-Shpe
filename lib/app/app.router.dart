@@ -5,7 +5,7 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:ecommerceapp/data/model/product_model.dart' as _i12;
+import 'package:ecommerceapp/data/model/product_model.dart' as _i13;
 import 'package:ecommerceapp/view/bottomnavigation/navigationbar_view.dart'
     as _i5;
 import 'package:ecommerceapp/view/screens/addcart/addcart_view.dart' as _i3;
@@ -15,11 +15,12 @@ import 'package:ecommerceapp/view/screens/category/category_view.dart' as _i9;
 import 'package:ecommerceapp/view/screens/checkout/checkout_view.dart' as _i10;
 import 'package:ecommerceapp/view/screens/detail/detail_view.dart' as _i7;
 import 'package:ecommerceapp/view/screens/onboard/onboard_view.dart' as _i2;
+import 'package:ecommerceapp/view/screens/profile/profile_view.dart' as _i11;
 import 'package:ecommerceapp/view/screens/splash/splash_view.dart' as _i4;
-import 'package:flutter/material.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i13;
+import 'package:stacked_services/stacked_services.dart' as _i14;
 
 class Routes {
   static const onboardView = '/onboard-view';
@@ -40,6 +41,8 @@ class Routes {
 
   static const checkOutView = '/check-out-view';
 
+  static const profileView = '/profile-view';
+
   static const all = <String>{
     onboardView,
     addcartView,
@@ -50,6 +53,7 @@ class Routes {
     signUpView,
     categoryView,
     checkOutView,
+    profileView,
   };
 }
 
@@ -91,55 +95,59 @@ class StackedRouter extends _i1.RouterBase {
       Routes.checkOutView,
       page: _i10.CheckOutView,
     ),
+    _i1.RouteDef(
+      Routes.profileView,
+      page: _i11.ProfileView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.OnboardView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.OnboardView(),
         settings: data,
       );
     },
     _i3.AddcartView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.AddcartView(),
         settings: data,
       );
     },
     _i4.SplashView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.SplashView(),
         settings: data,
       );
     },
     _i5.NavigationBarView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.NavigationBarView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.DetailView: (data) {
       final args = data.getArgs<DetailViewArguments>(nullOk: false);
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i7.DetailView(key: args.key, data: args.data),
         settings: data,
       );
     },
     _i8.SignUpView: (data) {
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.SignUpView(),
         settings: data,
       );
     },
     _i9.CategoryView: (data) {
       final args = data.getArgs<CategoryViewArguments>(nullOk: false);
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i9.CategoryView(key: args.key, data: args.data, title: args.title),
         settings: data,
@@ -147,9 +155,15 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i10.CheckOutView: (data) {
       final args = data.getArgs<CheckOutViewArguments>(nullOk: false);
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i10.CheckOutView(key: args.key, orderList: args.orderList),
+        settings: data,
+      );
+    },
+    _i11.ProfileView: (data) {
+      return _i12.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i11.ProfileView(),
         settings: data,
       );
     },
@@ -168,9 +182,9 @@ class DetailViewArguments {
     required this.data,
   });
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
-  final _i12.Product data;
+  final _i13.Product data;
 
   @override
   String toString() {
@@ -196,9 +210,9 @@ class CategoryViewArguments {
     required this.title,
   });
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
-  final List<_i12.Product> data;
+  final List<_i13.Product> data;
 
   final String title;
 
@@ -225,9 +239,9 @@ class CheckOutViewArguments {
     required this.orderList,
   });
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
-  final List<_i12.Product> orderList;
+  final List<_i13.Product> orderList;
 
   @override
   String toString() {
@@ -246,7 +260,7 @@ class CheckOutViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i13.NavigationService {
+extension NavigatorStateExtension on _i14.NavigationService {
   Future<dynamic> navigateToOnboardView([
     int? routerId,
     bool preventDuplicates = true,
@@ -318,8 +332,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToDetailView({
-    _i11.Key? key,
-    required _i12.Product data,
+    _i12.Key? key,
+    required _i13.Product data,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -349,8 +363,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToCategoryView({
-    _i11.Key? key,
-    required List<_i12.Product> data,
+    _i12.Key? key,
+    required List<_i13.Product> data,
     required String title,
     int? routerId,
     bool preventDuplicates = true,
@@ -367,8 +381,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> navigateToCheckOutView({
-    _i11.Key? key,
-    required List<_i12.Product> orderList,
+    _i12.Key? key,
+    required List<_i13.Product> orderList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -377,6 +391,20 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }) async {
     return navigateTo<dynamic>(Routes.checkOutView,
         arguments: CheckOutViewArguments(key: key, orderList: orderList),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToProfileView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.profileView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -454,8 +482,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> replaceWithDetailView({
-    _i11.Key? key,
-    required _i12.Product data,
+    _i12.Key? key,
+    required _i13.Product data,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -485,8 +513,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> replaceWithCategoryView({
-    _i11.Key? key,
-    required List<_i12.Product> data,
+    _i12.Key? key,
+    required List<_i13.Product> data,
     required String title,
     int? routerId,
     bool preventDuplicates = true,
@@ -503,8 +531,8 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }
 
   Future<dynamic> replaceWithCheckOutView({
-    _i11.Key? key,
-    required List<_i12.Product> orderList,
+    _i12.Key? key,
+    required List<_i13.Product> orderList,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -513,6 +541,20 @@ extension NavigatorStateExtension on _i13.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.checkOutView,
         arguments: CheckOutViewArguments(key: key, orderList: orderList),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithProfileView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.profileView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
