@@ -1,6 +1,5 @@
 import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:ecommerceapp/app/app.router.dart';
-import 'package:ecommerceapp/resources/page_transition.dart';
 import 'package:ecommerceapp/services/firebaseauth_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stacked/stacked.dart';
@@ -40,16 +39,14 @@ class SplashViewmodel extends BaseViewModel {
   }
 
   navigateToOnboard() {
-    return navigator.navigateTo(Routes.onboardView,
-        transition: (context, animation, secondaryAnimation, child) {
-      return PageTransition.transition(child);
-    });
+    return navigator.navigateTo(
+      Routes.onboardView,
+    );
   }
 
   navigateToNavBar() {
-    return navigator.navigateTo(Routes.navigationBarView,
-        transition: (context, animation, secondaryAnimation, child) {
-      return PageTransition.transition(child);
-    });
+    return navigator.navigateTo(
+      Routes.navigationBarView,
+    );
   }
 }

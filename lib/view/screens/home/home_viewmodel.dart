@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
-import 'package:ecommerceapp/resources/page_transition.dart';
 
 class HomeViewmodel extends BaseViewModel {
   final navigate = locator<NavigationService>();
@@ -25,17 +24,16 @@ class HomeViewmodel extends BaseViewModel {
 
 // navigate to addcartview
   navigateToProfile() {
-    navigate.navigateTo(Routes.profileView,
-        transition: (context, animation, secondaryAnimation, child) {
-      return PageTransition.transition(child);
-    });
+    navigate.navigateTo(
+      Routes.profileView,
+    );
   }
 
 // navigate to detailview
-  navigateToDetail(Product data) {
+  navigateToDetail(
+    Product data,
+  ) {
     return navigate.navigateTo(Routes.detailView,
-        transition: (context, animation, secondaryAnimation, child) {
-      return PageTransition.pageTransition(child);
-    }, arguments: DetailViewArguments(data: data));
+        arguments: DetailViewArguments(data: data));
   }
 }
