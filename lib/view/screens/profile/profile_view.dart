@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:ecommerceapp/data/model/user_model.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/view/screens/profile/profile_viewmodel.dart';

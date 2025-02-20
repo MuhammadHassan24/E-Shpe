@@ -1,22 +1,16 @@
 import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:ecommerceapp/app/app.router.dart';
-import 'package:ecommerceapp/data/product/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
+import 'package:ecommerceapp/resources/page_transition.dart';
 
 class HomeViewmodel extends BaseViewModel {
   final navigate = locator<NavigationService>();
 
   CarouselController controllerBanner = CarouselController();
   TextEditingController fieldController = TextEditingController();
-
-  List<Product> filteredProducts = [];
-
-  HomeViewmodel() {
-    filteredProducts = allProduct; // Set default products
-  }
 
   navigateToCategoryView(List<Product> category, String title) {
     return navigate.navigateTo(Routes.categoryView,
@@ -31,12 +25,17 @@ class HomeViewmodel extends BaseViewModel {
 
 // navigate to addcartview
   navigateToProfile() {
-    navigate.navigateTo(Routes.profileView);
+    navigate.navigateTo(Routes.profileView,
+        transition: (context, animation, secondaryAnimation, child) {
+      return PageTransition.transition(child);
+    });
   }
 
 // navigate to detailview
   navigateToDetail(Product data) {
     return navigate.navigateTo(Routes.detailView,
-        arguments: DetailViewArguments(data: data));
+        transition: (context, animation, secondaryAnimation, child) {
+      return PageTransition.pageTransition(child);
+    }, arguments: DetailViewArguments(data: data));
   }
 }

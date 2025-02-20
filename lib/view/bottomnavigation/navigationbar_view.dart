@@ -14,7 +14,6 @@ class NavigationBarView extends StatelessWidget {
         builder: (context, viewModel, child) {
           return Scaffold(
             body: PageTransitionSwitcher(
-              duration: const Duration(milliseconds: 350),
               reverse: viewModel.reverse,
               transitionBuilder: (
                 Widget child,
@@ -24,7 +23,7 @@ class NavigationBarView extends StatelessWidget {
                 return SharedAxisTransition(
                   animation: animation,
                   secondaryAnimation: secondaryAnimation,
-                  transitionType: SharedAxisTransitionType.scaled,
+                  transitionType: SharedAxisTransitionType.vertical,
                   child: child,
                 );
               },
