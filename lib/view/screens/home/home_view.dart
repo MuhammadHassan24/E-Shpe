@@ -4,7 +4,6 @@ import 'package:ecommerceapp/data/product/product_detail.dart';
 import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/view/screens/home/home_viewmodel.dart';
-import 'package:ecommerceapp/widget/app_snackbar.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/product_card.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +42,7 @@ class HomeView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: GestureDetector(
-                    onTap: () => viewModel.navigateToProfile(),
+                    onTap: () => viewModel.navigateToProfile(context),
                     child: const Icon(
                       Icons.person_rounded,
                       size: 28,
@@ -130,18 +129,8 @@ class HomeView extends StatelessWidget {
                         Product data = allProduct[index];
                         return ProductCard(
                           onTap: () => viewModel.navigateToDetail(data),
-                          onTapToAdd: () async {
-                            if (addCartItems.contains(data)) {
-                              AppSnackbar.snackBar(
-                                  context: context, message: "Already in Cart");
-                            } else {
-                              addCartItems.add(data);
-                              viewModel.rebuildUi();
-                              AppSnackbar.snackBar(
-                                  context: context,
-                                  message: "Add To Cart Successfully");
-                            }
-                          },
+                          onTapToAdd: () =>
+                              viewModel.cartServices.addToCart(data, context),
                           data: data,
                         );
                       })

@@ -4,7 +4,6 @@ import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
-import 'package:ecommerceapp/widget/app_snackbar.dart';
 import 'package:ecommerceapp/widget/rating_star.dart';
 import 'package:ecommerceapp/view/screens/detail/detail_viewmodel.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
@@ -60,27 +59,15 @@ class DetailView extends StatelessWidget {
                             ),
                             GestureDetector(
                               onTap: () {
-                                if (viewModel.isInWishlist(data)) {
-                                  viewModel.removeFromWishlist(data);
-                                  AppSnackbar.snackBar(
-                                    context: context,
-                                    message:
-                                        "Product Removed From Wishlist Successfully",
-                                  );
-                                } else {
-                                  viewModel.addToWishlist(data);
-                                  AppSnackbar.snackBar(
-                                    context: context,
-                                    message:
-                                        "Product Added To Wishlist Successfully",
-                                  );
-                                }
+                                viewModel.cartServices
+                                    .addAndRemoveWishlist(data);
+                                viewModel.rebuildUi();
                               },
                               child: Icon(
-                                viewModel.isInWishlist(data)
+                                viewModel.cartServices.isInWishlist(data)
                                     ? Icons.favorite
                                     : Icons.favorite_border,
-                                color: viewModel.isInWishlist(data)
+                                color: viewModel.cartServices.isInWishlist(data)
                                     ? Colors.red
                                     : Colors.black,
                               ),
@@ -109,12 +96,8 @@ class DetailView extends StatelessWidget {
                   Align(
                     alignment: AlignmentDirectional.center,
                     child: AppButton(
-                      onTap: () {
-                        viewModel.addToCart(data);
-                        AppSnackbar.snackBar(
-                            context: context,
-                            message: "Add To Cart Successfully");
-                      },
+                      onTap: () =>
+                          viewModel.cartServices.addToCart(data, context),
                       text: "Add To Cart",
                       width: 280,
                     ),

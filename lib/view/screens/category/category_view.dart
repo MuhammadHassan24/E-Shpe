@@ -1,6 +1,5 @@
 import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:ecommerceapp/view/screens/category/category_viewmodel.dart';
-import 'package:ecommerceapp/widget/app_snackbar.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/product_card.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,7 @@ class CategoryView extends StatelessWidget {
   const CategoryView({super.key, required this.data, required this.title});
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CategoryViewModel>.nonReactive(
+    return ViewModelBuilder<CategoryViewModel>.reactive(
       viewModelBuilder: () => CategoryViewModel(),
       builder: (context, viewModel, child) => Scaffold(
         appBar: AppBar(
@@ -40,11 +39,8 @@ class CategoryView extends StatelessWidget {
                 Product item = data[index];
                 return ProductCard(
                   onTap: () => viewModel.navigateToDetailView(item),
-                  onTapToAdd: () {
-                    viewModel.addToCart(item);
-                    AppSnackbar.snackBar(
-                        context: context, message: "Add To Cart Successfully");
-                  },
+                  onTapToAdd: () =>
+                      viewModel.cartServices.addToCart(item, context),
                   data: item,
                 );
               }),

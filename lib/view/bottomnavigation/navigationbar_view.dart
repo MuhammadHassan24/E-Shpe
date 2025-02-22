@@ -1,5 +1,4 @@
 import 'package:animations/animations.dart';
-import 'package:ecommerceapp/data/product/product_detail.dart';
 import 'package:ecommerceapp/view/bottomnavigation/navigationbar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -67,9 +66,10 @@ class NavigationBarView extends StatelessWidget {
                           right: 0,
                           child: CircleAvatar(
                             radius: 5,
-                            backgroundColor: addCartItems.isEmpty
-                                ? Colors.transparent
-                                : Colors.red,
+                            backgroundColor:
+                                viewModel.cartServices.addCartItems.isEmpty
+                                    ? Colors.transparent
+                                    : Colors.red,
                           ),
                         ),
                       ]),

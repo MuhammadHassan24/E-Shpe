@@ -1,4 +1,3 @@
-import 'package:ecommerceapp/data/product/product_detail.dart';
 import 'package:ecommerceapp/view/screens/wishlist/wishlist_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/product_card.dart';
@@ -22,7 +21,7 @@ class WishlistView extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            body: wishListItems.isEmpty
+            body: viewModel.cartServices.wishListItems.isEmpty
                 ? const Center(
                     child: AppText(
                       text: "No Item In Wishlist",
@@ -39,11 +38,13 @@ class WishlistView extends StatelessWidget {
                             crossAxisSpacing: 20,
                             mainAxisSpacing: 20,
                             crossAxisCount: 2),
-                    itemCount: wishListItems.length,
+                    itemCount: viewModel.cartServices.wishListItems.length,
                     itemBuilder: (_, index) {
-                      final data = wishListItems[index];
+                      final data = viewModel.cartServices.wishListItems[index];
                       return ProductCard(
                         onTap: () => viewModel.navigateToDetailView(data),
+                        onTapToAdd: () =>
+                            viewModel.cartServices.addToCart(data, context),
                         data: data,
                       );
                     }),

@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/services/cart_services.dart';
 import 'package:ecommerceapp/services/firebase_DB_services.dart';
 import 'package:ecommerceapp/view/screens/auth/login/login_view.dart';
 import 'package:ecommerceapp/view/screens/auth/singup/signup_view.dart';
@@ -29,5 +30,6 @@ import 'package:stacked_services/stacked_services.dart';
 ], dependencies: [
   Singleton(classType: NavigationService),
   Singleton(classType: FirebaseDbServices),
+  Singleton(classType: CartServices),
 ])
 class App {}

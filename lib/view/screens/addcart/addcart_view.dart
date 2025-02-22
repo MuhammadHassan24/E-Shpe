@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/data/model/product_model.dart';
-import 'package:ecommerceapp/data/product/product_detail.dart';
 import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/view/screens/addcart/addcart_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
@@ -30,12 +29,12 @@ class AddcartView extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            body: addCartItems.isEmpty
+            body: viewModel.cartServices.addCartItems.isEmpty
                 ? const Center(
                     child: AppText(text: "No Product In Cart", fontSize: 16),
                   )
                 : ListView.separated(
-                    itemCount: addCartItems.length,
+                    itemCount: viewModel.cartServices.addCartItems.length,
                     padding: const EdgeInsets.all(10),
                     separatorBuilder: (context, index) => const Divider(
                           height: 35,
@@ -44,14 +43,14 @@ class AddcartView extends StatelessWidget {
                           endIndent: 10,
                         ),
                     itemBuilder: (_, index) {
-                      Product data = addCartItems[index];
+                      Product data = viewModel.cartServices.addCartItems[index];
                       return ProductTile(
                         data: data,
                         onDelete: () => viewModel.removeFromCart(index),
                         onTap: () => viewModel.navigateToDetail(data),
                       );
                     }),
-            bottomNavigationBar: addCartItems.isNotEmpty
+            bottomNavigationBar: viewModel.cartServices.addCartItems.isNotEmpty
                 ? Container(
                     color: AppColors.cardBackgroundColors,
                     padding: const EdgeInsets.only(left: 20, right: 20),
@@ -73,8 +72,8 @@ class AddcartView extends StatelessWidget {
                           ],
                         ),
                         AppButton(
-                            onTap: () =>
-                                viewModel.navigateToCheckout(addCartItems),
+                            onTap: () => viewModel.navigateToCheckout(
+                                viewModel.cartServices.addCartItems),
                             text: "CheckOut",
                             width: 200)
                       ],

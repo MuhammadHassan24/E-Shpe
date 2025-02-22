@@ -1,10 +1,6 @@
 import 'package:ecommerceapp/data/model/category_model.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
 
-List<Product> wishListItems = [];
-
-List<Product> addCartItems = [];
-
 List<Product> electronic = [
   {
     'name': 'Smart TV',
