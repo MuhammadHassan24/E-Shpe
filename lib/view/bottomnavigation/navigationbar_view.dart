@@ -30,6 +30,7 @@ class NavigationBarView extends StatelessWidget {
                   canPop: viewModel.currentIndex == 0 ? true : false,
                   onPopInvokedWithResult: (didPop, result) {
                     if (viewModel.currentIndex != 0) {
+                      viewModel.rebuildUi();
                       viewModel.setIndex(0);
                     } else {
                       viewModel.setIndex(0);

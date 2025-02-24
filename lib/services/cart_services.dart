@@ -22,12 +22,20 @@ class CartServices {
   }
 
   addToCart(Product data, BuildContext context) {
-    if (addCartItems.contains(data)) {
-      return AppSnackbar.snackBar(context: context, message: "Already in Cart");
+    int index = addCartItems.indexWhere((e) => e.name == data.name);
+    if (index != -1) {
+      addCartItems[index].quantity += 1;
+      AppSnackbar.snackBar(
+          context: context, message: 'Add to cart successfully');
     } else {
-      addCartItems.add(data);
-      return AppSnackbar.snackBar(
-          context: context, message: "Add To Cart Successfully");
+      addCartItems.add(Product(
+          name: data.name,
+          price: data.price,
+          description: data.description,
+          image: data.image,
+          quantity: 1));
+      AppSnackbar.snackBar(
+          context: context, message: 'Add to cart successfully');
     }
   }
 

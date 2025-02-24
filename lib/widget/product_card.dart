@@ -1,18 +1,24 @@
+import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
+import 'package:ecommerceapp/services/cart_services.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
   final Product data;
-  final VoidCallback? onTap;
-  final VoidCallback? onTapToAdd;
-  const ProductCard(
-      {super.key, required this.data, this.onTap, this.onTapToAdd});
+  final Function()? onTap;
+
+  const ProductCard({
+    super.key,
+    required this.data,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final _cartServices = locator<CartServices>();
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -41,7 +47,11 @@ class ProductCard extends StatelessWidget {
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
-              GestureDetector(onTap: onTapToAdd, child: const Icon(Icons.add)),
+              GestureDetector(
+                  onTap: () {
+                    _cartServices.addToCart(data, context);
+                  },
+                  child: const Icon(Icons.add)),
             ],
           )
         ],

@@ -87,7 +87,7 @@ class DetailView extends StatelessWidget {
                         verticalSpace(60),
                         Align(
                           alignment: AlignmentDirectional.centerEnd,
-                          child: addAndRemoveItem(),
+                          child: addAndRemoveItem(data, viewModel),
                         ),
                       ],
                     ),
@@ -109,32 +109,34 @@ class DetailView extends StatelessWidget {
     );
   }
 
-  Widget addAndRemoveItem() {
+  Widget addAndRemoveItem(Product data, DetailViewmodel viewModel) {
     return Container(
       width: 95,
-      height: 30,
+      height: 27,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.black),
       ),
       child: Row(
         children: [
-          const SizedBox(
+          SizedBox(
             width: 30,
-            child: Icon(Icons.remove),
+            child: GestureDetector(onTap: () {}, child: Icon(Icons.remove)),
           ),
           Container(
             width: 30,
             color: AppColors.cardBackgroundColors,
-            child: const AppText(
-              text: "1",
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
+            child: AppText(
+              text: viewModel.cartServices.addCartItems.contains(data)
+                  ? data.quantity.toString()
+                  : "1",
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(
+          SizedBox(
             width: 30,
-            child: Icon(Icons.add),
+            child: GestureDetector(onTap: () {}, child: Icon(Icons.add)),
           ),
         ],
       ),

@@ -39,13 +39,13 @@ class SplashViewmodel extends BaseViewModel {
   }
 
   navigateToOnboard() {
-    return navigator.navigateTo(
+    return navigator.replaceWith(
       Routes.onboardView,
     );
   }
 
   navigateToNavBar() {
-    return navigator.navigateTo(
+    return navigator.replaceWith(
       Routes.navigationBarView,
     );
   }

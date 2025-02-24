@@ -56,7 +56,7 @@ class ProductTile extends StatelessWidget {
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
-                        _addAndRemoveItem()
+                        _addAndRemoveItem(data)
                       ],
                     )
                   ],
@@ -80,10 +80,10 @@ class ProductTile extends StatelessWidget {
     );
   }
 
-  Widget _addAndRemoveItem() {
+  Widget _addAndRemoveItem(Product data) {
     return Container(
       width: 88,
-      height: 30,
+      height: 27,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.black),
@@ -97,10 +97,10 @@ class ProductTile extends StatelessWidget {
           Container(
             width: 28,
             color: AppColors.cardBackgroundColors,
-            child: const AppText(
-              text: "1",
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
+            child: AppText(
+              text: data.quantity.toString(),
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
             ),
           ),
           const SizedBox(

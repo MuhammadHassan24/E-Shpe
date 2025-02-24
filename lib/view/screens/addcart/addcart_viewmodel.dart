@@ -14,7 +14,7 @@ class AddcartViewmodel extends BaseViewModel {
   // calculate total price
   void calculateTotalPrice() async {
     totalPrice = cartServices.addCartItems
-        .fold(0, (sum, product) => sum + product.price);
+        .fold(0, (sum, product) => sum + product.price * product.quantity);
     rebuildUi();
   }
 

@@ -43,8 +43,6 @@ class WishlistView extends StatelessWidget {
                       final data = viewModel.cartServices.wishListItems[index];
                       return ProductCard(
                         onTap: () => viewModel.navigateToDetailView(data),
-                        onTapToAdd: () =>
-                            viewModel.cartServices.addToCart(data, context),
                         data: data,
                       );
                     }),

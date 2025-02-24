@@ -3,12 +3,14 @@ class Product {
   final int price;
   final String description;
   final String image;
+  int quantity;
 
   Product({
     required this.name,
     required this.price,
     required this.description,
     required this.image,
+    required this.quantity,
   });
 
   // Factory method to create a Product from a Map
@@ -18,6 +20,7 @@ class Product {
       price: map['price'] as int,
       description: map['description'] as String,
       image: map['image'] as String,
+      quantity: map['quantity'] as int,
     );
   }
 
@@ -28,6 +31,7 @@ class Product {
       'price': price,
       'description': description,
       'image': image,
+      'quantity': quantity,
     };
   }
 }

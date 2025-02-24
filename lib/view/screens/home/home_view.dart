@@ -129,8 +129,6 @@ class HomeView extends StatelessWidget {
                         Product data = allProduct[index];
                         return ProductCard(
                           onTap: () => viewModel.navigateToDetail(data),
-                          onTapToAdd: () =>
-                              viewModel.cartServices.addToCart(data, context),
                           data: data,
                         );
                       })
