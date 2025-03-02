@@ -4,7 +4,7 @@ import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/view/screens/checkout/checkout_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
-import 'package:ecommerceapp/widget/product_tile.dart';
+import 'package:ecommerceapp/widget/cart_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -92,7 +92,7 @@ class CheckOutView extends StatelessWidget {
                             ),
                         itemBuilder: (_, index) {
                           Product data = orderList[index];
-                          return ProductTile(
+                          return CartTile(
                             data: data,
                             onDelete: () {},
                           );

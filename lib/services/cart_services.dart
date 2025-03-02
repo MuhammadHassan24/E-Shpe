@@ -3,11 +3,13 @@ import 'package:ecommerceapp/widget/app_snackbar.dart';
 import 'package:flutter/material.dart';
 
 class CartServices {
-  final List<Product> _wishListItems = [];
-  List<Product> get wishListItems => _wishListItems;
+  int initialQuantity = 1;
 
-  final List<Product> _addCartItems = [];
-  List<Product> get addCartItems => _addCartItems;
+  final List<Product> wishListItems = [];
+  // List<Product> get wishListItems => _wishListItems;
+
+  final List<Product> addCartItems = [];
+  // List<Product> get addCartItems => _addCartItems;
 
   bool isInWishlist(Product data) {
     return wishListItems.contains(data);
@@ -21,12 +23,18 @@ class CartServices {
     }
   }
 
-  addToCart(Product data, BuildContext context) {
+  void addToCart(Product data, BuildContext context) {
     int index = addCartItems.indexWhere((e) => e.name == data.name);
+
     if (index != -1) {
-      addCartItems[index].quantity += 1;
-      AppSnackbar.snackBar(
-          context: context, message: 'Add to cart successfully');
+      if (addCartItems[index].quantity == data.quantity) {
+        AppSnackbar.snackBar(
+            context: context, message: 'You have reached the maximum quantity');
+      } else {
+        addCartItems[index].quantity += 1;
+        AppSnackbar.snackBar(
+            context: context, message: 'Added to cart successfully');
+      }
     } else {
       addCartItems.add(Product(
           name: data.name,
@@ -35,11 +43,21 @@ class CartServices {
           image: data.image,
           quantity: 1));
       AppSnackbar.snackBar(
-          context: context, message: 'Add to cart successfully');
+          context: context, message: 'Added to cart successfully');
     }
   }
 
   removeFromCart(Product data) {
-    return addCartItems.remove(data);
+    addCartItems.remove(data);
+  }
+
+  addQuantity(Product data) {
+    data.quantity += 1;
+  }
+
+  reduceQuantity(Product data) {
+    if (data.quantity > 1) {
+      data.quantity -= 1;
+    }
   }
 }

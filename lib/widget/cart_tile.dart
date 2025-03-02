@@ -1,25 +1,35 @@
+import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
+import 'package:ecommerceapp/services/cart_services.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:flutter/material.dart';
 
-class ProductTile extends StatelessWidget {
+class CartTile extends StatefulWidget {
   final Product data;
   final VoidCallback onDelete;
   final VoidCallback? onTap;
-  const ProductTile({
-    super.key,
-    required this.onDelete,
+  const CartTile({
+    Key? key,
     required this.data,
+    required this.onDelete,
     this.onTap,
   });
+
+  @override
+  State<CartTile> createState() => _CartTileState();
+}
+
+class _CartTileState extends State<CartTile> {
   @override
   Widget build(BuildContext context) {
+    final _cartServices = locator<CartServices>();
+
     return Padding(
       padding: const EdgeInsets.all(10),
       child: GestureDetector(
-        onTap: onTap,
+        onTap: widget.onTap,
         child: Stack(
           children: [
             Container(
@@ -28,7 +38,7 @@ class ProductTile extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: AppColors.cardBackgroundColors,
                     borderRadius: BorderRadius.circular(8)),
-                child: Image.asset(data.image)),
+                child: Image.asset(widget.data.image)),
             Positioned(
               top: -16,
               right: 0,
@@ -43,7 +53,7 @@ class ProductTile extends StatelessWidget {
                   children: [
                     verticalSpaceMedium,
                     AppText(
-                      text: data.name,
+                      text: widget.data.name,
                       fontSize: 15,
                       color: Colors.black38,
                       fontWeight: FontWeight.bold,
@@ -52,11 +62,11 @@ class ProductTile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppText(
-                          text: "\$ ${data.price.toString()}",
+                          text: "\$ ${widget.data.price.toString()}",
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
-                        _addAndRemoveItem(data)
+                        _addAndRemoveItem(widget.data, _cartServices)
                       ],
                     )
                   ],
@@ -67,7 +77,7 @@ class ProductTile extends StatelessWidget {
               right: 0,
               top: 8,
               child: GestureDetector(
-                onTap: onDelete,
+                onTap: widget.onDelete,
                 child: const Icon(
                   Icons.delete,
                   color: Colors.black38,
@@ -80,7 +90,7 @@ class ProductTile extends StatelessWidget {
     );
   }
 
-  Widget _addAndRemoveItem(Product data) {
+  Widget _addAndRemoveItem(Product data, CartServices cartServices) {
     return Container(
       width: 88,
       height: 27,
@@ -90,9 +100,14 @@ class ProductTile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const SizedBox(
+          SizedBox(
             width: 28,
-            child: Icon(Icons.remove),
+            child: GestureDetector(
+                onTap: () {
+                  cartServices.reduceQuantity(data);
+                  setState(() {});
+                },
+                child: Icon(Icons.remove)),
           ),
           Container(
             width: 28,
@@ -103,9 +118,14 @@ class ProductTile extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(
+          SizedBox(
             width: 28,
-            child: Icon(Icons.add),
+            child: GestureDetector(
+                onTap: () {
+                  cartServices.addQuantity(data);
+                  setState(() {});
+                },
+                child: Icon(Icons.add)),
           ),
         ],
       ),

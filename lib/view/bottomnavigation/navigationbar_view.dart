@@ -12,32 +12,16 @@ class NavigationBarView extends StatelessWidget {
         viewModelBuilder: () => NavigationBarModel(),
         builder: (context, viewModel, child) {
           return Scaffold(
-            body: PageTransitionSwitcher(
-              reverse: viewModel.reverse,
-              transitionBuilder: (
-                Widget child,
-                Animation<double> animation,
-                Animation<double> secondaryAnimation,
-              ) {
-                return SharedAxisTransition(
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  transitionType: SharedAxisTransitionType.vertical,
-                  child: child,
-                );
-              },
-              child: PopScope(
-                  canPop: viewModel.currentIndex == 0 ? true : false,
-                  onPopInvokedWithResult: (didPop, result) {
-                    if (viewModel.currentIndex != 0) {
-                      viewModel.rebuildUi();
-                      viewModel.setIndex(0);
-                    } else {
-                      viewModel.setIndex(0);
-                    }
-                  },
-                  child: viewModel.getView(viewModel.currentIndex)),
-            ),
+            body: PopScope(
+                canPop: viewModel.currentIndex == 0 ? true : false,
+                onPopInvokedWithResult: (didPop, result) {
+                  if (viewModel.currentIndex != 0) {
+                    viewModel.setIndex(0);
+                  } else {
+                    viewModel.setIndex(0);
+                  }
+                },
+                child: viewModel.getView(viewModel.currentIndex)),
             bottomNavigationBar: Theme(
               data: ThemeData(
                   highlightColor: Colors.transparent,

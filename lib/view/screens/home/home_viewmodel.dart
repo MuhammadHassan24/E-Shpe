@@ -26,36 +26,18 @@ class HomeViewmodel extends BaseViewModel {
 
 // navigate to addcartview
   navigateToProfile(BuildContext context) {
-    var begin = 0.1;
-    var end = 1.0;
-    var curve = Curves.ease;
-
-    var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-    navigate.navigateTo(Routes.profileView,
-        transition: (context, animation, sconAnimation, child) {
-      return FadeTransition(
-        opacity: animation.drive(tween),
-        child: child,
-      );
-    });
+    navigate.navigateTo(
+      Routes.profileView,
+    );
   }
 
 // navigate to detailview
   navigateToDetail(
     Product data,
   ) {
-    return navigate.navigateTo(Routes.detailView,
-        transition: (context, animation, sconAnimation, child) {
-      var begin = 0.1;
-      var end = 1.0;
-      var curve = Curves.ease;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-      return FadeTransition(
-        opacity: animation.drive(tween),
-        child: child,
-      );
-    }, arguments: DetailViewArguments(data: data));
+    navigate.navigateTo(
+      Routes.detailView,
+      arguments: DetailViewArguments(data: data),
+    );
   }
 }

@@ -3,7 +3,7 @@ import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/view/screens/addcart/addcart_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
-import 'package:ecommerceapp/widget/product_tile.dart';
+import 'package:ecommerceapp/widget/cart_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -44,7 +44,7 @@ class AddcartView extends StatelessWidget {
                         ),
                     itemBuilder: (_, index) {
                       Product data = viewModel.cartServices.addCartItems[index];
-                      return ProductTile(
+                      return CartTile(
                         data: data,
                         onDelete: () => viewModel.removeFromCart(index),
                         onTap: () => viewModel.navigateToDetail(data),
