@@ -1,9 +1,12 @@
+import 'dart:developer';
 import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:ecommerceapp/widget/app_snackbar.dart';
 import 'package:flutter/material.dart';
 
 class CartServices {
   int initialQuantity = 1;
+
+  int totalPrice = 0;
 
   final List<Product> wishListItems = [];
   // List<Product> get wishListItems => _wishListItems;
@@ -15,6 +18,7 @@ class CartServices {
     return wishListItems.contains(data);
   }
 
+// add and remove wishlist
   addAndRemoveWishlist(Product data) {
     if (isInWishlist(data)) {
       wishListItems.remove(data);
@@ -23,6 +27,7 @@ class CartServices {
     }
   }
 
+// add to cart
   void addToCart(Product data, BuildContext context) {
     int index = addCartItems.indexWhere((e) => e.name == data.name);
 
@@ -47,17 +52,31 @@ class CartServices {
     }
   }
 
-  removeFromCart(Product data) {
-    addCartItems.remove(data);
-  }
-
+// add product quantity
   addQuantity(Product data) {
     data.quantity += 1;
+    log(data.quantity.toString());
+    calculateTotalPrice();
   }
 
+// reduce product quantity
   reduceQuantity(Product data) {
     if (data.quantity > 1) {
       data.quantity -= 1;
+      log(data.quantity.toString());
+      reducePrice();
     }
+  }
+
+  // calculate total price with quantity
+  void calculateTotalPrice() {
+    totalPrice = addCartItems.fold(
+        0, (sum, product) => sum + product.price * product.quantity);
+  }
+
+// reduce price from total price
+  reducePrice() {
+    totalPrice = addCartItems.fold(
+        0, (sub, product) => sub -= product.price * product.quantity);
   }
 }

@@ -15,12 +15,18 @@ class SignUpView extends StatelessWidget {
     return ViewModelBuilder.nonReactive(
       viewModelBuilder: () => SignUpViewmodel(),
       builder: (context, viewModel, child) {
+        final isLandscape =
+            MediaQuery.of(context).orientation == Orientation.landscape;
+
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(),
           body: Padding(
             padding: const EdgeInsets.only(left: 18, right: 18),
             child: SingleChildScrollView(
+              physics: isLandscape
+                  ? const AlwaysScrollableScrollPhysics()
+                  : const NeverScrollableScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

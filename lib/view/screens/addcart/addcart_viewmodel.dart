@@ -12,23 +12,30 @@ class AddcartViewmodel extends BaseViewModel {
   double totalPrice = 0;
 
   // calculate total price
-  void calculateTotalPrice() async {
+  void calculateTotalPrice() {
     totalPrice = cartServices.addCartItems
         .fold(0, (sum, product) => sum + product.price * product.quantity);
     rebuildUi();
   }
 
+  reducePrice() {
+    totalPrice = cartServices.addCartItems
+        .fold(0, (sub, product) => sub -= product.price * product.quantity);
+    rebuildUi();
+  }
+
   // remove from cart and update total price
-  void removeFromCart(index) {
+  removeFromCart(index) async {
     int priceToSubtract = cartServices.addCartItems[index].price;
     cartServices.addCartItems.removeAt(index);
     totalPrice -= priceToSubtract;
     rebuildUi();
   }
 
-  navigateToCheckout(List<Product> orderList) {
-    _navigationService.navigateTo(Routes.checkOutView,
+  navigateToCheckout(List<Product> orderList) async {
+    await _navigationService.navigateTo(Routes.checkOutView,
         arguments: CheckOutViewArguments(orderList: orderList));
+    rebuildUi();
   }
 
   void navigateToDetail(Product data) {

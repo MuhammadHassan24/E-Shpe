@@ -39,16 +39,34 @@ class HomeView extends StatelessWidget {
                 ],
               ),
               actions: [
+                Stack(children: [
+                  GestureDetector(
+                      onTap: () => viewModel.navigateToAddCart(),
+                      child: Icon(Icons.shopping_bag_outlined)),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: CircleAvatar(
+                      radius: 5,
+                      backgroundColor:
+                          viewModel.cartServices.addCartItems.isNotEmpty
+                              ? Colors.red
+                              : Colors.transparent,
+                    ),
+                  ),
+                ]),
+                SizedBox(
+                  width: 15,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: GestureDetector(
-                    onTap: () => viewModel.navigateToProfile(context),
-                    child: const Icon(
-                      Icons.person_rounded,
+                    child: Icon(
+                      Icons.more_vert,
                       size: 28,
                     ),
                   ),
-                )
+                ),
               ],
             ),
             body: SingleChildScrollView(
@@ -129,6 +147,10 @@ class HomeView extends StatelessWidget {
                         Product data = allProduct[index];
                         return ProductCard(
                           onTap: () => viewModel.navigateToDetail(data),
+                          onTapAdd: () {
+                            viewModel.cartServices.addToCart(data, context);
+                            viewModel.rebuildUi();
+                          },
                           data: data,
                         );
                       })

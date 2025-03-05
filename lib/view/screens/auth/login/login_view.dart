@@ -15,68 +15,77 @@ class LoginView extends StatelessWidget {
     return ViewModelBuilder.reactive(
       viewModelBuilder: () => LoginViewModel(),
       builder: (context, viewModel, child) {
+        final isLandscape =
+            MediaQuery.of(context).orientation == Orientation.landscape;
+
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(),
           body: Padding(
             padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                verticalSpaceSmall,
-                const AppText(
-                  text: "Welcome back to \nE-Shop",
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  textAlign: TextAlign.start,
-                ),
-                verticalSpaceTiny,
-                const AppText(
-                  text: "Discover Limitless Choices And Unmatched\nConvenience",
-                  fontSize: 16,
-                  color: Colors.black38,
-                ),
-                verticalSpaceMedium,
-                Center(child: _buildForm(viewModel)),
-                const SizedBox(
-                  height: 40,
-                ),
-                const Center(
-                    child: AppText(text: "Or Sign in With", fontSize: 13)),
-                verticalSpaceSmall,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 20,
-                  children: [
-                    Container(
-                      height: 37,
-                      width: 37,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(100),
+            child: SingleChildScrollView(
+              physics: isLandscape
+                  ? const AlwaysScrollableScrollPhysics()
+                  : const NeverScrollableScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  verticalSpaceSmall,
+                  const AppText(
+                    text: "Welcome back to \nE-Shop",
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    textAlign: TextAlign.start,
+                  ),
+                  verticalSpaceTiny,
+                  const AppText(
+                    text:
+                        "Discover Limitless Choices And Unmatched\nConvenience",
+                    fontSize: 16,
+                    color: Colors.black38,
+                  ),
+                  verticalSpaceMedium,
+                  Center(child: _buildForm(viewModel)),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  const Center(
+                      child: AppText(text: "Or Sign in With", fontSize: 13)),
+                  verticalSpaceSmall,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 20,
+                    children: [
+                      Container(
+                        height: 37,
+                        width: 37,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black12),
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Image.asset(
+                          "asset/images/google.png",
+                          fit: BoxFit.cover,
+                          scale: 1.5,
+                        ),
                       ),
-                      child: Image.asset(
-                        "asset/images/google.png",
-                        fit: BoxFit.cover,
-                        scale: 1.5,
+                      Container(
+                        height: 38,
+                        width: 38,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black12),
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Icon(
+                          Icons.facebook,
+                          color: Colors.blue[800],
+                          // size: 30,
+                        ),
                       ),
-                    ),
-                    Container(
-                      height: 38,
-                      width: 38,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black12),
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Icon(
-                        Icons.facebook,
-                        color: Colors.blue[800],
-                        // size: 30,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         );

@@ -9,16 +9,17 @@ import 'package:flutter/material.dart';
 class ProductCard extends StatelessWidget {
   final Product data;
   final Function()? onTap;
+  final Function()? onTapAdd;
 
   const ProductCard({
     super.key,
     required this.data,
+    this.onTapAdd,
     this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final _cartServices = locator<CartServices>();
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -47,11 +48,7 @@ class ProductCard extends StatelessWidget {
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
-              GestureDetector(
-                  onTap: () {
-                    _cartServices.addToCart(data, context);
-                  },
-                  child: const Icon(Icons.add)),
+              GestureDetector(onTap: onTapAdd, child: const Icon(Icons.add)),
             ],
           )
         ],

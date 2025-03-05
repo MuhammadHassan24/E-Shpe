@@ -37,5 +37,22 @@ class SearchViewmodel extends BaseViewModel {
     rebuildUi();
   }
 
-  lowToHigh() {}
+  lowToHigh(String query) {
+    result = allProduct
+        .where((e) => e.name.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+
+    filterItems = result..sort((a, b) => a.price.compareTo(b.price));
+
+    rebuildUi();
+  }
+
+  highToLow(String query) {
+    result = allProduct
+        .where((e) => e.name.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+
+    filterItems = result..sort((a, b) => b.price.compareTo(a.price));
+    rebuildUi();
+  }
 }

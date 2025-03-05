@@ -14,9 +14,8 @@ class AddcartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => AddcartViewmodel(),
-        onViewModelReady: (viewModel) {
-          viewModel.calculateTotalPrice();
-        },
+        onViewModelReady: (viewModel) =>
+            viewModel.cartServices.calculateTotalPrice(),
         builder: (_, viewModel, child) {
           return Scaffold(
             floatingActionButtonLocation:
@@ -46,7 +45,18 @@ class AddcartView extends StatelessWidget {
                       Product data = viewModel.cartServices.addCartItems[index];
                       return CartTile(
                         data: data,
-                        onDelete: () => viewModel.removeFromCart(index),
+                        onAdd: () {
+                          viewModel.cartServices.addQuantity(data);
+                          viewModel.rebuildUi();
+                        },
+                        onDelete: () {
+                          viewModel.removeFromCart(index);
+                          viewModel.cartServices.calculateTotalPrice();
+                        },
+                        onRemove: () {
+                          viewModel.cartServices.reduceQuantity(data);
+                          viewModel.rebuildUi();
+                        },
                         onTap: () => viewModel.navigateToDetail(data),
                       );
                     }),
@@ -65,7 +75,8 @@ class AddcartView extends StatelessWidget {
                           children: [
                             const AppText(text: "Total Price", fontSize: 16),
                             AppText(
-                              text: "\$ ${viewModel.totalPrice.toString()}",
+                              text:
+                                  "\$ ${viewModel.cartServices.totalPrice.abs().toString()}",
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             )

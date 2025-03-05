@@ -99,12 +99,7 @@ class DetailView extends StatelessWidget {
                                 SizedBox(
                                   width: 30,
                                   child: GestureDetector(
-                                      onTap: () {
-                                        viewModel.cartServices
-                                            .reduceQuantity(data);
-                                        viewModel.rebuildUi();
-                                      },
-                                      child: Icon(Icons.remove)),
+                                      onTap: () {}, child: Icon(Icons.remove)),
                                 ),
                                 Container(
                                   width: 30,
@@ -116,10 +111,7 @@ class DetailView extends StatelessWidget {
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap: () {
-                                    viewModel.cartServices.addQuantity(data);
-                                    viewModel.rebuildUi();
-                                  },
+                                  onTap: () {},
                                   child: SizedBox(
                                     width: 30,
                                     child: Icon(Icons.add),

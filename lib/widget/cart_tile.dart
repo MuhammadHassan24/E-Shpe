@@ -10,10 +10,14 @@ class CartTile extends StatefulWidget {
   final Product data;
   final VoidCallback onDelete;
   final VoidCallback? onTap;
+  final VoidCallback? onAdd;
+  final VoidCallback? onRemove;
   const CartTile({
     Key? key,
     required this.data,
     required this.onDelete,
+    this.onAdd,
+    this.onRemove,
     this.onTap,
   });
 
@@ -24,7 +28,8 @@ class CartTile extends StatefulWidget {
 class _CartTileState extends State<CartTile> {
   @override
   Widget build(BuildContext context) {
-    final _cartServices = locator<CartServices>();
+    final cartServices = locator<CartServices>();
+    final totalPrice = widget.data.price * widget.data.quantity;
 
     return Padding(
       padding: const EdgeInsets.all(10),
@@ -62,11 +67,43 @@ class _CartTileState extends State<CartTile> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppText(
-                          text: "\$ ${widget.data.price.toString()}",
+                          text: "\$ ${totalPrice.toString()}",
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
-                        _addAndRemoveItem(widget.data, _cartServices)
+                        Container(
+                          width: 88,
+                          height: 27,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 28,
+                                child: GestureDetector(
+                                    onTap: widget.onRemove,
+                                    child: Icon(Icons.remove)),
+                              ),
+                              Container(
+                                width: 28,
+                                color: AppColors.cardBackgroundColors,
+                                child: AppText(
+                                  text: widget.data.quantity.toString(),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 28,
+                                child: GestureDetector(
+                                    onTap: widget.onAdd,
+                                    child: Icon(Icons.add)),
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     )
                   ],
@@ -90,45 +127,45 @@ class _CartTileState extends State<CartTile> {
     );
   }
 
-  Widget _addAndRemoveItem(Product data, CartServices cartServices) {
-    return Container(
-      width: 88,
-      height: 27,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.black),
-      ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 28,
-            child: GestureDetector(
-                onTap: () {
-                  cartServices.reduceQuantity(data);
-                  setState(() {});
-                },
-                child: Icon(Icons.remove)),
-          ),
-          Container(
-            width: 28,
-            color: AppColors.cardBackgroundColors,
-            child: AppText(
-              text: data.quantity.toString(),
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          SizedBox(
-            width: 28,
-            child: GestureDetector(
-                onTap: () {
-                  cartServices.addQuantity(data);
-                  setState(() {});
-                },
-                child: Icon(Icons.add)),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _addAndRemoveItem(Product data, CartServices cartServices) {
+  //   return Container(
+  //     width: 88,
+  //     height: 27,
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(10),
+  //       border: Border.all(color: Colors.black),
+  //     ),
+  //     child: Row(
+  //       children: [
+  //         SizedBox(
+  //           width: 28,
+  //           child: GestureDetector(
+  //               onTap: () {
+  //                 cartServices.reduceQuantity(data);
+  //                 setState(() {});
+  //               },
+  //               child: Icon(Icons.remove)),
+  //         ),
+  //         Container(
+  //           width: 28,
+  //           color: AppColors.cardBackgroundColors,
+  //           child: AppText(
+  //             text: data.quantity.toString(),
+  //             fontSize: 15,
+  //             fontWeight: FontWeight.w500,
+  //           ),
+  //         ),
+  //         SizedBox(
+  //           width: 28,
+  //           child: GestureDetector(
+  //               onTap: () {
+  //                 cartServices.addQuantity(data);
+  //                 setState(() {});
+  //               },
+  //               child: Icon(Icons.add)),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

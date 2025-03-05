@@ -43,26 +43,13 @@ class NavigationBarView extends StatelessWidget {
                       icon: Icon(Icons.search_outlined),
                       label: "Search"),
                   NavigationDestination(
-                      selectedIcon: Icon(Icons.shopping_cart_rounded),
-                      icon: Stack(children: [
-                        Icon(Icons.shopping_cart_outlined),
-                        Positioned(
-                          top: 0,
-                          right: 0,
-                          child: CircleAvatar(
-                            radius: 5,
-                            backgroundColor:
-                                viewModel.cartServices.addCartItems.isEmpty
-                                    ? Colors.transparent
-                                    : Colors.red,
-                          ),
-                        ),
-                      ]),
-                      label: "Cart"),
-                  NavigationDestination(
                       selectedIcon: Icon(Icons.favorite_rounded),
                       icon: Icon(Icons.favorite_border_outlined),
                       label: "Wishlist"),
+                  NavigationDestination(
+                      selectedIcon: Icon(Icons.person),
+                      icon: Icon(Icons.person_outline),
+                      label: "Account"),
                 ],
                 onDestinationSelected: (newIndex) {
                   viewModel.setIndex(newIndex);

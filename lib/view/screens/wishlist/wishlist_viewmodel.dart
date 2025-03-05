@@ -9,8 +9,9 @@ class WishlistViewmodel extends BaseViewModel {
   final _navigation = locator<NavigationService>();
   final cartServices = locator<CartServices>();
 
-  navigateToDetailView(Product data) {
-    _navigation.navigateTo(Routes.detailView,
+  navigateToDetailView(Product data) async {
+    await _navigation.navigateTo(Routes.detailView,
         arguments: DetailViewArguments(data: data));
+    rebuildUi();
   }
 }

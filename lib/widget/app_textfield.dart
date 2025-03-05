@@ -1,4 +1,4 @@
-import 'package:ecommerceapp/resources/keyboard_extn.dart';
+import 'package:ecommerceapp/extension/keyboard_extn.dart';
 import 'package:flutter/material.dart';
 
 class AppTextfield extends StatelessWidget {
