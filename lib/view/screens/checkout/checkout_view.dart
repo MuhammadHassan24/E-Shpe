@@ -18,92 +18,94 @@ class CheckOutView extends StatelessWidget {
         viewModelBuilder: () => CheckoutViewModel(),
         builder: (_, viewModel, child) {
           return Scaffold(
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerFloat,
-            appBar: AppBar(
-              centerTitle: true,
-              title: const AppText(
-                text: "CheckOut",
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Divider(),
-                    verticalSpaceTiny,
-                    const AppText(
-                      text: "Shipping address",
-                      fontSize: 16,
-                      color: AppColors.textColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    verticalSpaceSmall,
-                    const Row(
-                      children: [
-                        CircleAvatar(
-                            radius: 20,
-                            child: Icon(
-                              Icons.edit_location_rounded,
-                              size: 28,
-                            )),
-                        horizontalSpaceSmall,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppText(
-                              text: "Home",
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            verticalSpaceTiny,
-                            AppText(
-                              text: "--------------------------",
-                              fontSize: 16,
-                              color: AppColors.textColor,
-                            )
-                          ],
-                        ),
-                        Spacer(),
-                        Icon(Icons.edit)
-                      ],
-                    ),
-                    verticalspaceBetween,
-                    const AppText(
-                      text: "Order List",
-                      fontSize: 16,
-                      color: AppColors.textColor,
-                    ),
-                    verticalspaceBetween,
-                    ListView.separated(
-                        itemCount: orderList.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        // padding: const EdgeInsets.all(10),
-                        separatorBuilder: (context, index) => const Divider(
-                              height: 35,
-                              thickness: 2,
-                              indent: 10,
-                              endIndent: 10,
-                            ),
-                        itemBuilder: (_, index) {
-                          Product data = orderList[index];
-                          return CartTile(
-                            data: data,
-                            onDelete: () {},
-                          );
-                        }),
-                  ],
+              persistentFooterAlignment: AlignmentDirectional.bottomCenter,
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerFloat,
+              appBar: AppBar(
+                centerTitle: true,
+                title: const AppText(
+                  text: "CheckOut",
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            floatingActionButton: AppButton(
-                onTap: () {}, text: "Continue to payment", width: 280),
-          );
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 15, right: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Divider(),
+                      verticalSpaceTiny,
+                      const AppText(
+                        text: "Shipping address",
+                        fontSize: 16,
+                        color: AppColors.textColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      verticalSpaceSmall,
+                      const Row(
+                        children: [
+                          CircleAvatar(
+                              radius: 20,
+                              child: Icon(
+                                Icons.edit_location_rounded,
+                                size: 28,
+                              )),
+                          horizontalSpaceSmall,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AppText(
+                                text: "Home",
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              verticalSpaceTiny,
+                              AppText(
+                                text: "--------------------------",
+                                fontSize: 16,
+                                color: AppColors.textColor,
+                              )
+                            ],
+                          ),
+                          Spacer(),
+                          Icon(Icons.edit)
+                        ],
+                      ),
+                      verticalspaceBetween,
+                      const AppText(
+                        text: "Order List",
+                        fontSize: 16,
+                        color: AppColors.textColor,
+                      ),
+                      verticalspaceBetween,
+                      ListView.separated(
+                          itemCount: orderList.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          // padding: const EdgeInsets.all(10),
+                          separatorBuilder: (context, index) => const Divider(
+                                height: 35,
+                                thickness: 2,
+                                indent: 10,
+                                endIndent: 10,
+                              ),
+                          itemBuilder: (_, index) {
+                            Product data = orderList[index];
+                            return CartTile(
+                              data: data,
+                              onDelete: () {},
+                            );
+                          }),
+                    ],
+                  ),
+                ),
+              ),
+              persistentFooterButtons: [
+                AppButton(
+                    onTap: () {}, text: "Continue to payment", width: 280),
+              ]);
         });
   }
 }

@@ -58,11 +58,7 @@ class DetailView extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                viewModel.cartServices
-                                    .addAndRemoveWishlist(data);
-                                viewModel.rebuildUi();
-                              },
+                              onTap: () => viewModel.removeWishlist(data),
                               child: Icon(
                                 viewModel.cartServices.isInWishlist(data)
                                     ? Icons.favorite
@@ -99,12 +95,12 @@ class DetailView extends StatelessWidget {
                                 SizedBox(
                                   width: 30,
                                   child: GestureDetector(
-                                      onTap: () {}, child: Icon(Icons.remove)),
+                                      onTap: () {}, child: const Icon(Icons.remove)),
                                 ),
                                 Container(
                                   width: 30,
                                   color: AppColors.cardBackgroundColors,
-                                  child: AppText(
+                                  child: const AppText(
                                     text: "1",
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
@@ -112,7 +108,7 @@ class DetailView extends StatelessWidget {
                                 ),
                                 GestureDetector(
                                   onTap: () {},
-                                  child: SizedBox(
+                                  child: const SizedBox(
                                     width: 30,
                                     child: Icon(Icons.add),
                                   ),
@@ -128,8 +124,10 @@ class DetailView extends StatelessWidget {
                   Align(
                     alignment: AlignmentDirectional.center,
                     child: AppButton(
-                      onTap: () =>
-                          viewModel.cartServices.addToCart(data, context),
+                      onTap: () {
+                        viewModel.cartServices.addToCart(data, context);
+                        viewModel.rebuildUi();
+                      },
                       text: "Add To Cart",
                       width: 280,
                     ),

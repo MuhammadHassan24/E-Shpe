@@ -22,8 +22,7 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      customBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+    return GestureDetector(
       onTap: onTap,
       child: Container(
         height: height,
@@ -34,11 +33,10 @@ class AppButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
-          child: AppText(
-            text: text,
-            fontSize: 18,
-            color: textColor,
-            fontWeight: FontWeight.bold,
+          child: Text(
+            text,
+            style: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold, color: textColor),
           ),
         ),
       ),

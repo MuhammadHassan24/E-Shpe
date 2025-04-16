@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:80531112537:android:f7e4f23bd157d759ab6748',
     messagingSenderId: '80531112537',
     projectId: 'e-shop-32eaa',
+    databaseURL: 'https://e-shop-32eaa-default-rtdb.firebaseio.com',
     storageBucket: 'e-shop-32eaa.firebasestorage.app',
   );
 
@@ -62,7 +63,9 @@ class DefaultFirebaseOptions {
     appId: '1:80531112537:ios:7d4f82734839b371ab6748',
     messagingSenderId: '80531112537',
     projectId: 'e-shop-32eaa',
+    databaseURL: 'https://e-shop-32eaa-default-rtdb.firebaseio.com',
     storageBucket: 'e-shop-32eaa.firebasestorage.app',
     iosBundleId: 'com.example.ecommerceapp',
   );
+
 }

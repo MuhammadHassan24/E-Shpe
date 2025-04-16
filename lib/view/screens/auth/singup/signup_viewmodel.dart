@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:ecommerceapp/app/app.locator.dart';
+import 'package:ecommerceapp/app/app.router.dart';
 import 'package:ecommerceapp/data/model/user_model.dart';
 import 'package:ecommerceapp/services/firebase_DB_services.dart';
 import 'package:ecommerceapp/services/firebaseauth_services.dart';
@@ -20,7 +21,7 @@ class SignUpViewmodel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  // Add your existing code here
+  bool visibility = true;
 
   signup(email, password) async {
     await _firebaseAuth.signUp(email, password);
@@ -37,8 +38,14 @@ class SignUpViewmodel extends BaseViewModel {
   submit(email, password) async {
     if (formKey.currentState!.validate()) {
       await signup(email, password);
+      navigator.back();
     } else {
       log("errorrr");
     }
+  }
+
+  void toggleVisibility() {
+    visibility = !visibility;
+    rebuildUi();
   }
 }

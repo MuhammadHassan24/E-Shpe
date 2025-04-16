@@ -11,16 +11,22 @@ class FirebaseDbServices {
 
   final _collection = "users";
 
-  Future<void> addData(
-    UserModel data,
-  ) async {
+  Future<void> addData(UserModel data) async {
     try {
+      // Validate email format
+      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(data.email)) {
+        throw Exception('Invalid email format');
+      }
+
       await _firestore
           .collection(_collection)
           .doc(_auth.currentUser!.uid)
           .set(data.toMap());
-    } on FirebaseException catch (e) {
-      log(e.toString());
+    } on FirebaseAuthException catch (e) {
+      log('Firebase Auth Error: ${e.message}');
+      // Show a user-friendly error (e.g., SnackBar or Dialog)
+    } catch (e) {
+      log('Unexpected Error: $e');
     }
   }
 

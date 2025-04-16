@@ -1,8 +1,6 @@
-import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
-import 'package:ecommerceapp/services/cart_services.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +26,6 @@ class CartTile extends StatefulWidget {
 class _CartTileState extends State<CartTile> {
   @override
   Widget build(BuildContext context) {
-    final cartServices = locator<CartServices>();
     final totalPrice = widget.data.price * widget.data.quantity;
 
     return Padding(
@@ -84,7 +81,7 @@ class _CartTileState extends State<CartTile> {
                                 width: 28,
                                 child: GestureDetector(
                                     onTap: widget.onRemove,
-                                    child: Icon(Icons.remove)),
+                                    child: const Icon(Icons.remove)),
                               ),
                               Container(
                                 width: 28,
@@ -99,7 +96,7 @@ class _CartTileState extends State<CartTile> {
                                 width: 28,
                                 child: GestureDetector(
                                     onTap: widget.onAdd,
-                                    child: Icon(Icons.add)),
+                                    child: const Icon(Icons.add)),
                               ),
                             ],
                           ),

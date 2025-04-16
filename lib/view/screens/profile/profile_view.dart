@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:ecommerceapp/data/model/user_model.dart';
+import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/view/screens/profile/profile_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
@@ -16,7 +19,6 @@ class ProfileView extends StatelessWidget {
 
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => ProfileViewModel(),
-        fireOnViewModelReadyOnce: true,
         builder: (_, viewModel, child) {
           UserModel? data = viewModel.data;
 
@@ -28,6 +30,17 @@ class ProfileView extends StatelessWidget {
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
+              actions: [
+                GestureDetector(
+                    onTap: () {
+                      viewModel.navigateToSettings(
+                          data!, viewModel.image ?? File(""));
+                    },
+                    child: const Icon(Icons.settings)),
+                const SizedBox(
+                  width: 15,
+                )
+              ],
             ),
             body: SingleChildScrollView(
               physics: isLandscape
@@ -45,7 +58,7 @@ class ProfileView extends StatelessWidget {
                           CircleAvatar(
                             radius: 50,
                             backgroundImage: viewModel.image == null
-                                ? AssetImage("asset/images/filter.png")
+                                ? const AssetImage("asset/images/filter.png")
                                 : FileImage(viewModel.image!),
                           ),
                           Positioned(
@@ -53,14 +66,15 @@ class ProfileView extends StatelessWidget {
                             bottom: 0,
                             child: CircleAvatar(
                               radius: 15,
-                              backgroundColor: Colors.amber,
+                              backgroundColor: AppColors.cardBackgroundColors,
                               child: GestureDetector(
                                 onTap: () async {
                                   await viewModel.addImage();
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.camera_alt,
                                   size: 18,
+                                  color: Colors.black,
                                 ),
                               ),
                             ),
@@ -88,7 +102,7 @@ class ProfileView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppText(
+                          const AppText(
                             text: "Profile Information",
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

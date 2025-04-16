@@ -12,7 +12,7 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder.nonReactive(
+    return ViewModelBuilder.reactive(
       viewModelBuilder: () => SignUpViewmodel(),
       builder: (context, viewModel, child) {
         final isLandscape =
@@ -119,7 +119,12 @@ class SignUpView extends StatelessWidget {
           AppTextfield(
             validator: (value) {
               if (value!.isEmpty) {
-                return Validate.validateEmail(value.toString());
+                return 'Email is required';
+              }
+              if (!RegExp(
+                      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                  .hasMatch(value)) {
+                return 'Please enter a valid email';
               }
               return null;
             },
@@ -135,10 +140,17 @@ class SignUpView extends StatelessWidget {
               }
               return null;
             },
+            suffixIcon: GestureDetector(
+                onTap: () {
+                  viewModel.toggleVisibility();
+                },
+                child: Icon(!viewModel.visibility
+                    ? Icons.visibility
+                    : Icons.visibility_off)),
             controller: viewModel.passwordController,
             hintText: "Password",
             width: double.infinity,
-            obscureText: true,
+            obscureText: viewModel.visibility,
           ),
           verticalspaceBetween,
           AppTextfield(

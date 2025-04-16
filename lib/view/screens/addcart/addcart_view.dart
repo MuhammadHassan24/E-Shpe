@@ -14,8 +14,7 @@ class AddcartView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => AddcartViewmodel(),
-        onViewModelReady: (viewModel) =>
-            viewModel.cartServices.calculateTotalPrice(),
+        onViewModelReady: (viewModel) => viewModel.initialize(),
         builder: (_, viewModel, child) {
           return Scaffold(
             floatingActionButtonLocation:
@@ -45,19 +44,13 @@ class AddcartView extends StatelessWidget {
                       Product data = viewModel.cartServices.addCartItems[index];
                       return CartTile(
                         data: data,
-                        onAdd: () {
-                          viewModel.cartServices.addQuantity(data);
-                          viewModel.rebuildUi();
-                        },
+                        onAdd: () => viewModel.onAddQuantity(data),
+                        onTap: () => viewModel.navigateToDetail(data),
+                        onRemove: () => viewModel.onRemoveQuantity(data),
                         onDelete: () {
                           viewModel.removeFromCart(index);
-                          viewModel.cartServices.calculateTotalPrice();
+                          viewModel.initialize();
                         },
-                        onRemove: () {
-                          viewModel.cartServices.reduceQuantity(data);
-                          viewModel.rebuildUi();
-                        },
-                        onTap: () => viewModel.navigateToDetail(data),
                       );
                     }),
             bottomNavigationBar: viewModel.cartServices.addCartItems.isNotEmpty

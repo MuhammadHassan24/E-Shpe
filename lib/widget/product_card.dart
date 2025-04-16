@@ -1,7 +1,5 @@
-import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
-import 'package:ecommerceapp/services/cart_services.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:flutter/material.dart';

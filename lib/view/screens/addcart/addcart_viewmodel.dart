@@ -11,16 +11,19 @@ class AddcartViewmodel extends BaseViewModel {
 
   double totalPrice = 0;
 
-  // calculate total price
-  void calculateTotalPrice() {
-    totalPrice = cartServices.addCartItems
-        .fold(0, (sum, product) => sum + product.price * product.quantity);
+  initialize() {
+    cartServices.calculateTotalPrice();
+  }
+
+  onAddQuantity(Product data) {
+    cartServices.addQuantity(
+      data,
+    );
     rebuildUi();
   }
 
-  reducePrice() {
-    totalPrice = cartServices.addCartItems
-        .fold(0, (sub, product) => sub -= product.price * product.quantity);
+  onRemoveQuantity(Product data) {
+    cartServices.reduceQuantity(data);
     rebuildUi();
   }
 

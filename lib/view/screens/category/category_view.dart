@@ -39,6 +39,8 @@ class CategoryView extends StatelessWidget {
                 Product item = data[index];
                 return ProductCard(
                   onTap: () => viewModel.navigateToDetailView(item),
+                  onTapAdd: () =>
+                      viewModel.cartServices.addToCart(item, context),
                   data: item,
                 );
               }),

@@ -30,6 +30,7 @@ Widget spacedDivider = const Column(
 );
 
 Widget verticalSpace(double height) => SizedBox(height: height);
+Widget horizontalSpace(double width) => SizedBox(width: width);
 
 double screenWidth(BuildContext context) => MediaQuery.sizeOf(context).width;
 double screenHeight(BuildContext context) => MediaQuery.sizeOf(context).height;

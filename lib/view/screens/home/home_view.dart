@@ -42,7 +42,7 @@ class HomeView extends StatelessWidget {
                 Stack(children: [
                   GestureDetector(
                       onTap: () => viewModel.navigateToAddCart(),
-                      child: Icon(Icons.shopping_bag_outlined)),
+                      child: const Icon(Icons.shopping_bag_outlined)),
                   Positioned(
                     top: 0,
                     right: 0,
@@ -55,17 +55,8 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                 ]),
-                SizedBox(
+                const SizedBox(
                   width: 15,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: GestureDetector(
-                    child: Icon(
-                      Icons.more_vert,
-                      size: 28,
-                    ),
-                  ),
                 ),
               ],
             ),

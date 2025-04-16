@@ -28,21 +28,13 @@ class UserModel {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    if (name != null) {
-      result.addAll({'name': name});
-    }
-    if (email != null) {
-      result.addAll({'email': email});
-    }
-    if (password != null) {
-      result.addAll({'password': password});
-    }
-    if (username != null) {
-      result.addAll({'username': username});
-    }
-    if (number != null) {
-      result.addAll({'number': number});
-    }
+    result.addAll({
+      'name': name,
+      'email': email,
+      'password': password,
+      'username': username,
+      'number': number
+    });
 
     return result;
   }

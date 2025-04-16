@@ -28,9 +28,13 @@ class SearchViewmodel extends BaseViewModel {
   }
 
   seacrh(String query) {
-    result = allProduct
-        .where((e) => e.name.toLowerCase().contains(query.toLowerCase()))
-        .toList();
+    if (query == " ") {
+      result = [];
+    } else {
+      result = allProduct
+          .where((e) => e.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
 
     filterItems = result;
 

@@ -13,9 +13,10 @@ class HomeViewmodel extends BaseViewModel {
   CarouselController controllerBanner = CarouselController();
   TextEditingController fieldController = TextEditingController();
 
-  navigateToCategoryView(List<Product> category, String title) {
-    return navigate.navigateTo(Routes.categoryView,
+  navigateToCategoryView(List<Product> category, String title) async {
+    await navigate.navigateTo(Routes.categoryView,
         arguments: CategoryViewArguments(data: category, title: title));
+    rebuildUi();
   }
 
   @override
@@ -35,10 +36,11 @@ class HomeViewmodel extends BaseViewModel {
 // navigate to detailview
   navigateToDetail(
     Product data,
-  ) {
-    navigate.navigateTo(
+  ) async {
+    await navigate.navigateTo(
       Routes.detailView,
       arguments: DetailViewArguments(data: data),
     );
+    rebuildUi();
   }
 }

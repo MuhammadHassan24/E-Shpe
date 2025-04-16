@@ -46,7 +46,7 @@ class SearchView extends StatelessWidget {
                                   onTap: () => viewModel.highToLow(viewModel
                                       .searchController.text
                                       .toString()),
-                                  child: Text("High to low"),
+                                  child: const Text("High to low"),
                                 )
                               ];
                             }),

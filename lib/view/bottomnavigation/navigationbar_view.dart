@@ -1,4 +1,3 @@
-import 'package:animations/animations.dart';
 import 'package:ecommerceapp/view/bottomnavigation/navigationbar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -34,19 +33,19 @@ class NavigationBarView extends StatelessWidget {
                     NavigationDestinationLabelBehavior.onlyShowSelected,
                 selectedIndex: viewModel.currentIndex,
                 destinations: [
-                  NavigationDestination(
+                  const NavigationDestination(
                       icon: Icon(Icons.home_outlined),
                       selectedIcon: Icon(Icons.home_rounded),
                       label: "Home"),
-                  NavigationDestination(
+                  const NavigationDestination(
                       selectedIcon: Icon(Icons.search_rounded),
                       icon: Icon(Icons.search_outlined),
                       label: "Search"),
-                  NavigationDestination(
+                  const NavigationDestination(
                       selectedIcon: Icon(Icons.favorite_rounded),
                       icon: Icon(Icons.favorite_border_outlined),
                       label: "Wishlist"),
-                  NavigationDestination(
+                  const NavigationDestination(
                       selectedIcon: Icon(Icons.person),
                       icon: Icon(Icons.person_outline),
                       label: "Account"),

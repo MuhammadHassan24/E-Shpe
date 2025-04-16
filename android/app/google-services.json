@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "80531112537",
+    "firebase_url": "https://e-shop-32eaa-default-rtdb.firebaseio.com",
     "project_id": "e-shop-32eaa",
     "storage_bucket": "e-shop-32eaa.firebasestorage.app"
   },

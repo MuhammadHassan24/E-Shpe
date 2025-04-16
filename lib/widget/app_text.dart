@@ -8,7 +8,7 @@ class AppText extends StatelessWidget {
   final FontWeight fontWeight;
   final double height;
   final Color color;
-  final VoidCallback? onTap; // Added onTap callback
+  final Function()? onTap;
 
   const AppText({
     super.key,
@@ -18,13 +18,13 @@ class AppText extends StatelessWidget {
     this.fontWeight = FontWeight.normal,
     this.height = 0,
     this.color = AppColors.primaryColor,
-    this.onTap, // Initialize onTap
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap, // Attach the onTap callback
+      onTap: onTap,
       child: FittedBox(
         child: Text(
           text,

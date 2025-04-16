@@ -35,7 +35,7 @@ class FirebaseAuthServices {
         log('The account already exists for that email.');
       }
     } catch (e) {
-      log(e.toString());
+      log("ERROR IN AUTH ${e.toString()}");
     }
   }
 }

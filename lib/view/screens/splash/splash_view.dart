@@ -12,7 +12,7 @@ class SplashView extends StatelessWidget {
       viewModelBuilder: () => SplashViewmodel(),
       onViewModelReady: (viewModel) => viewModel.initialize(),
       builder: (context, viewModel, child) {
-        return Scaffold(
+        return const Scaffold(
           body: Center(
               child: AppText(
             text: "E-Shop",
