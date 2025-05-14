@@ -38,6 +38,10 @@ class AppTextfield extends StatelessWidget {
         onChanged: onChanged,
         cursorColor: Colors.black,
         decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(color: Colors.black, width: 2),
+            ),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
                 borderSide: const BorderSide(color: Colors.black38)),

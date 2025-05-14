@@ -96,24 +96,27 @@ class HomeView extends StatelessWidget {
                             itemExtent: 360,
                             itemSnapping: true,
                             scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.symmetric(horizontal: 18),
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             children: [
                               Image.asset(
                                 "asset/images/banner.png",
+                                fit: BoxFit.cover,
                               ),
                               Image.asset(
                                 "asset/images/banner.png",
+                                fit: BoxFit.cover,
                               ),
                               Image.asset(
                                 "asset/images/banner.png",
+                                fit: BoxFit.cover,
                               ),
                             ]),
                       )),
                   verticalSpaceSmall,
                   const Padding(
-                    padding: EdgeInsets.only(left: 18),
+                    padding: EdgeInsets.only(left: 15),
                     child: AppText(
                       text: "All Items",
                       fontSize: 20,

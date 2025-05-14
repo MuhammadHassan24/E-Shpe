@@ -1,8 +1,8 @@
+import 'package:ecommerceapp/view/screens/checkout/checkout_viewmodel.dart';
 import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:ecommerceapp/data/model/user_model.dart';
 import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
-import 'package:ecommerceapp/view/screens/checkout/checkout_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +45,7 @@ class CheckOutView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: orderList.length == 2 ? 190 : null,
+                      height: orderList.length >= 2 ? 190 : 90,
                       child: ListView.separated(
                           shrinkWrap: true,
                           itemBuilder: (_, index) {

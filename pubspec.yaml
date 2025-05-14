@@ -45,7 +45,7 @@ dependencies:
   skeletonizer: ^1.4.3
   stacked_shared: any
   image_picker: ^1.1.2
-  flutter_stripe: ^11.5.0
+  flutter_stripe: ^11.4.0
   dio: ^5.8.0+1
 
 dev_dependencies:
@@ -60,6 +60,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   stacked_generator: 
   build_runner: ^2.4.13
+  flutter_launcher_icons: ^0.14.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -101,3 +102,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "asset/icon/app_icon.png"
