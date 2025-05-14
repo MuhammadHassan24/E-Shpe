@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/view/screens/wishlist/wishlist_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/product_card.dart';
@@ -15,6 +16,7 @@ class WishlistView extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               centerTitle: true,
+              backgroundColor: AppColors.cardBackgroundColors,
               title: const AppText(
                 text: "WishList",
                 fontSize: 25,
@@ -43,6 +45,8 @@ class WishlistView extends StatelessWidget {
                       final data = viewModel.cartServices.wishListItems[index];
                       return ProductCard(
                         onTap: () => viewModel.navigateToDetailView(data),
+                        onTapAdd: () =>
+                            viewModel.cartServices.addToCart(data, context),
                         data: data,
                       );
                     }),

@@ -43,7 +43,7 @@ class SettingsView extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 30,
-                            backgroundImage: image == null
+                            backgroundImage: image.path.isEmpty
                                 ? const AssetImage("asset/images/filter.png")
                                 : FileImage(image),
                           ),
@@ -61,14 +61,6 @@ class SettingsView extends StatelessWidget {
                               AppText(text: data!.email, fontSize: 15),
                             ],
                           ),
-                          const SizedBox(
-                            width: 90,
-                          ),
-                          const Icon(
-                            Icons.edit_sharp,
-                            color: Colors.black38,
-                            size: 22,
-                          )
                         ],
                       ),
                     )),
@@ -77,51 +69,65 @@ class SettingsView extends StatelessWidget {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    child: SizedBox(
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 20, top: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppText(
-                              text: "Account Setting",
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            verticalspaceBetween,
-                            _settingMenuTile(
-                                "My Address",
-                                "Set shopping delivery address",
-                                Icon(Icons.location_on_outlined)),
-                            _settingMenuTile(
-                                "My Cart",
-                                "Set shopping delivery address",
-                                Icon(Icons.shopping_cart_outlined))
-                          ],
-                        ),
-                        decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20))),
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 20, top: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const AppText(
+                            text: "Account Setting",
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          verticalspaceBetween,
+                          _settingMenuTile(
+                              "My Address",
+                              "Set shopping delivery address",
+                              const Icon(Icons.location_on_outlined),
+                              onTap: () {
+                            viewModel.navigateToaddress();
+                          }),
+                          _settingMenuTile(
+                              "My Cart",
+                              "Set shopping delivery address",
+                              const Icon(Icons.shopping_cart_outlined))
+                        ],
                       ),
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                     )),
+                const Positioned(
+                  left: 0,
+                  top: 40,
+                  right: -300,
+                  // bottom: -10,
+                  child: Icon(
+                    Icons.edit_sharp,
+                    color: Colors.black38,
+                    size: 22,
+                  ),
+                )
               ],
             ),
           );
         });
   }
 
-  Widget _settingMenuTile(String title, String subtitle, Icon icon) {
+  Widget _settingMenuTile(String title, String subtitle, Icon icon,
+      {Function()? onTap}) {
     return ListTile(
+      onTap: onTap,
       leading: icon,
       title: Text(
         title,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
       ),
       subtitle: Text(
         subtitle,
-        style: TextStyle(fontSize: 13),
+        style: const TextStyle(fontSize: 13),
       ),
     );
   }

@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/resources/ui_helper.dart';
-import 'package:ecommerceapp/resources/validate.dart';
 import 'package:ecommerceapp/view/screens/auth/login/login_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
@@ -20,9 +19,8 @@ class LoginView extends StatelessWidget {
 
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: AppBar(),
           body: Padding(
-            padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+            padding: const EdgeInsets.only(top: 85, left: 15, right: 15),
             child: SingleChildScrollView(
               physics: isLandscape
                   ? const AlwaysScrollableScrollPhysics()
@@ -102,7 +100,12 @@ class LoginView extends StatelessWidget {
                 width: double.infinity,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return Validate.validateEmail(value.toString());
+                    return 'Email is required';
+                  }
+                  if (!RegExp(
+                          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                      .hasMatch(value)) {
+                    return 'Please enter a valid email';
                   }
                   return null;
                 },
@@ -113,7 +116,10 @@ class LoginView extends StatelessWidget {
               width: double.infinity,
               validator: (value) {
                 if (value!.isEmpty) {
-                  return Validate.validatePassword(value.toString());
+                  return 'Password is required';
+                }
+                if (value.length < 8) {
+                  return 'Password must be at least 8 characters long';
                 }
                 return null;
               },

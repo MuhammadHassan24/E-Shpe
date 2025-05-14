@@ -24,6 +24,8 @@ class ProfileView extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: AppColors.cardBackgroundColors,
               centerTitle: true,
               title: const AppText(
                 text: "Account",
@@ -93,12 +95,12 @@ class ProfileView extends StatelessWidget {
                     verticalSpaceSmall,
                     const Divider(
                       thickness: 1.5,
-                      indent: 20,
-                      endIndent: 20,
+                      indent: 15,
+                      endIndent: 15,
                     ),
                     verticalSpaceSmall,
                     Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.only(left: 15, right: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -108,95 +110,102 @@ class ProfileView extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                           verticalSpaceMedium,
-                          Row(
-                            children: [
-                              const AppText(
-                                text: "Name",
-                                fontSize: 16,
-                              ),
-                              const SizedBox(
-                                width: 94,
-                              ),
-                              AppText(
-                                text: data?.name ?? 'Loading...',
-                                fontSize: 16,
-                              ),
-                            ],
+                          Container(
+                            height: 65,
+                            padding: const EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              // color: AppColors.cardBackgroundColors,
+                            ),
+                            child: Row(
+                              spacing: 15,
+                              children: [
+                                const Icon(Icons.person),
+                                Column(
+                                  spacing: 5,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const AppText(
+                                      text: "Name",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    AppText(
+                                      text: data?.name ?? 'Loading...',
+                                      fontSize: 16,
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 15,
                           ),
-                          Row(
-                            children: [
-                              const AppText(
-                                text: "UserName",
-                                fontSize: 16,
-                              ),
-                              const SizedBox(
-                                width: 60,
-                              ),
-                              AppText(
-                                text: data?.username ?? 'Loading...',
-                                fontSize: 16,
-                              ),
-                            ],
-                          ),
-                          verticalSpaceMedium,
-                          const Divider(
-                            thickness: 1.5,
-                          ),
-                          verticalSpaceSmall,
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const AppText(
-                            text: "Personal Information",
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          verticalSpaceMedium,
-                          Row(
-                            children: [
-                              const AppText(
-                                text: "Email",
-                                fontSize: 16,
-                              ),
-                              const SizedBox(
-                                width: 94,
-                              ),
-                              AppText(
-                                text: data?.email ?? 'Loading...',
-                                fontSize: 16,
-                              ),
-                            ],
+                          Container(
+                            height: 65,
+                            padding: const EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              // color: AppColors.cardBackgroundColors,
+                            ),
+                            child: Row(
+                              spacing: 15,
+                              children: [
+                                const Icon(Icons.email_outlined),
+                                Column(
+                                  spacing: 5,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const AppText(
+                                      text: "Email",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    AppText(
+                                      text: data?.email ?? 'Loading...',
+                                      fontSize: 16,
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 15,
                           ),
-                          Row(
-                            children: [
-                              const AppText(
-                                text: "Phone Number",
-                                fontSize: 16,
-                              ),
-                              const SizedBox(
-                                width: 25,
-                              ),
-                              AppText(
-                                text: data?.number ?? 'Loading...',
-                                fontSize: 16,
-                              ),
-                            ],
+                          Container(
+                            height: 65,
+                            padding: const EdgeInsets.only(left: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              // color: AppColors.cardBackgroundColors,
+                            ),
+                            child: Row(
+                              spacing: 15,
+                              children: [
+                                const Icon(Icons.phone),
+                                Column(
+                                  spacing: 5,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const AppText(
+                                      text: "Phone Number",
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    AppText(
+                                      text: data?.number ?? 'Loading...',
+                                      fontSize: 16,
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          verticalSpaceMedium,
-                          const Divider(
-                            thickness: 1.5,
-                          )
                         ],
                       ),
                     ),

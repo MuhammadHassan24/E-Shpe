@@ -19,10 +19,10 @@ class OnboardViewmodel extends BaseViewModel {
 
 // navigate to bottom navigation
   navigateToNavBar() {
-    navigator.replaceWith(Routes.navigationBarView);
+    navigator.clearStackAndShow(Routes.navigationBarView);
   }
 
   navigateToLogin() {
-    navigator.replaceWith(Routes.loginView);
+    navigator.clearStackAndShow(Routes.loginView);
   }
 }

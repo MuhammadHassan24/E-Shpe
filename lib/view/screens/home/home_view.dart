@@ -22,6 +22,7 @@ class HomeView extends StatelessWidget {
           return Scaffold(
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
+              backgroundColor: AppColors.cardBackgroundColors,
               surfaceTintColor: Colors.transparent,
               automaticallyImplyLeading: false,
               toolbarHeight: 65,

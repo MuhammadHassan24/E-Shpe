@@ -36,6 +36,7 @@ class AppTextfield extends StatelessWidget {
         focusNode: focusNode,
         controller: controller,
         onChanged: onChanged,
+        cursorColor: Colors.black,
         decoration: InputDecoration(
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),

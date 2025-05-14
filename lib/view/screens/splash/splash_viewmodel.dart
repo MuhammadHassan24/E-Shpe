@@ -31,11 +31,15 @@ class SplashViewmodel extends BaseViewModel {
   Future handleState() async {
     _auth.auth.authStateChanges().listen((user) {
       if (user == null) {
-        navigateToOnboard();
+        navigateToLogin();
       } else {
         navigateToNavBar();
       }
     });
+  }
+
+  navigateToLogin() {
+    return navigator.replaceWith(Routes.loginView);
   }
 
   navigateToOnboard() {

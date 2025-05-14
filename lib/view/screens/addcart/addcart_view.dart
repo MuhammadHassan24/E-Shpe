@@ -21,6 +21,7 @@ class AddcartView extends StatelessWidget {
                 FloatingActionButtonLocation.centerFloat,
             appBar: AppBar(
               centerTitle: true,
+              backgroundColor: AppColors.cardBackgroundColors,
               title: const AppText(
                 text: "AddCart",
                 fontSize: 25,
@@ -76,8 +77,11 @@ class AddcartView extends StatelessWidget {
                           ],
                         ),
                         AppButton(
-                            onTap: () => viewModel.navigateToCheckout(
-                                viewModel.cartServices.addCartItems),
+                            onTap: () async {
+                              await viewModel.navigateToCheckout(
+                                  viewModel.cartServices.addCartItems,
+                                  context: context);
+                            },
                             text: "CheckOut",
                             width: 200)
                       ],

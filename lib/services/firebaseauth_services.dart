@@ -1,8 +1,11 @@
 import 'dart:developer';
+import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class FirebaseAuthServices {
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final navigationService = locator<NavigationService>();
 
   Future login(String email, String password) async {
     try {
@@ -26,7 +29,7 @@ class FirebaseAuthServices {
         email: email,
         password: password,
       );
-      log(userCredential.user!.email!);
+
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

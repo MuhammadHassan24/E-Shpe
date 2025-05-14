@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/data/model/product_model.dart';
+import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/view/screens/category/category_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/product_card.dart';
@@ -14,9 +15,11 @@ class CategoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<CategoryViewModel>.reactive(
       viewModelBuilder: () => CategoryViewModel(),
+      onViewModelReady: (viewModel) => viewModel.getAddress(),
       builder: (context, viewModel, child) => Scaffold(
         appBar: AppBar(
           centerTitle: true,
+          backgroundColor: AppColors.cardBackgroundColors,
           title: AppText(
             text: title,
             fontSize: 25,

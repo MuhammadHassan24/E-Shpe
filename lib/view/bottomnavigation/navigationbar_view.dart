@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/view/bottomnavigation/navigationbar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -26,8 +27,9 @@ class NavigationBarView extends StatelessWidget {
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent),
               child: NavigationBar(
-                height: 70,
+                height: 65,
                 elevation: 0,
+                backgroundColor: AppColors.cardBackgroundColors,
                 indicatorColor: Colors.transparent,
                 labelBehavior:
                     NavigationDestinationLabelBehavior.onlyShowSelected,

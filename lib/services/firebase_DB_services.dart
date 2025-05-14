@@ -13,11 +13,6 @@ class FirebaseDbServices {
 
   Future<void> addData(UserModel data) async {
     try {
-      // Validate email format
-      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(data.email)) {
-        throw Exception('Invalid email format');
-      }
-
       await _firestore
           .collection(_collection)
           .doc(_auth.currentUser!.uid)

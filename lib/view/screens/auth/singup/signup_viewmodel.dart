@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:ecommerceapp/app/app.locator.dart';
-import 'package:ecommerceapp/app/app.router.dart';
 import 'package:ecommerceapp/data/model/user_model.dart';
 import 'package:ecommerceapp/services/firebase_DB_services.dart';
 import 'package:ecommerceapp/services/firebaseauth_services.dart';
@@ -16,29 +15,30 @@ class SignUpViewmodel extends BaseViewModel {
 
   final formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController userNameController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   bool visibility = true;
 
-  signup(email, password) async {
+  signup(email, password, context) async {
     await _firebaseAuth.signUp(email, password);
     UserModel _user = UserModel(
-        name: nameController.text,
-        email: email,
-        password: password,
-        number: numberController.text,
-        username: userNameController.text);
-
+      name: nameController.text,
+      email: email,
+      password: password,
+      number: numberController.text,
+    );
     await _firebaseDB.addData(_user);
+    nameController.clear();
+    numberController.clear();
+    emailController.clear();
+    passwordController.clear();
   }
 
-  submit(email, password) async {
+  submit(email, password, context) async {
     if (formKey.currentState!.validate()) {
-      await signup(email, password);
-      navigator.back();
+      await signup(email, password, context);
     } else {
       log("errorrr");
     }

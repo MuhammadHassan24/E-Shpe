@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:ecommerceapp/data/model/product_model.dart';
 import 'package:ecommerceapp/widget/app_snackbar.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CartServices {
   int initialQuantity = 1;
@@ -9,10 +10,8 @@ class CartServices {
   int totalPrice = 0;
 
   final List<Product> wishListItems = [];
-  // List<Product> get wishListItems => _wishListItems;
 
   final List<Product> addCartItems = [];
-  // List<Product> get addCartItems => _addCartItems;
 
   bool isInWishlist(Product data) {
     return wishListItems.contains(data);
@@ -78,5 +77,27 @@ class CartServices {
   reducePrice() {
     totalPrice = addCartItems.fold(
         0, (sub, product) => sub -= product.price * product.quantity);
+  }
+}
+
+class SavedAddressService {
+  static const _key = 'addresses';
+
+  Future<void> addAddress(String address) async {
+    final prefs = await SharedPreferences.getInstance();
+    final existing = prefs.getStringList(_key) ?? [];
+    final updated = [...existing, address];
+    await prefs.setStringList(
+        _key, updated.toSet().toList()); // avoid duplicates
+  }
+
+  Future<List<String>> getAddresses() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList(_key) ?? [];
+  }
+
+  Future<void> clearAddresses() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_key);
   }
 }

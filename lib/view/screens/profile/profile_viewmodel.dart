@@ -32,7 +32,7 @@ class ProfileViewModel extends FutureViewModel<UserModel> {
     );
     if (img == null) return null;
 
-    image = File(img.path);
+    image = File(img.path.toString());
     rebuildUi();
   }
 

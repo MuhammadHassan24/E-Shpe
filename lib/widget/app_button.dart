@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/resources/app_colors.dart';
-import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {

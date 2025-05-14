@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/resources/ui_helper.dart';
-import 'package:ecommerceapp/resources/validate.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/app_textfield.dart';
@@ -37,7 +36,7 @@ class SignUpView extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                   verticalSpaceMedium,
-                  _buildForm(viewModel),
+                  _buildForm(viewModel, context),
                   verticalSpaceMedium,
                   const Center(
                     child: AppText(
@@ -87,7 +86,7 @@ class SignUpView extends StatelessWidget {
     );
   }
 
-  Widget _buildForm(SignUpViewmodel viewModel) {
+  Widget _buildForm(SignUpViewmodel viewModel, BuildContext context) {
     return Form(
       key: viewModel.formKey,
       child: Column(
@@ -95,25 +94,13 @@ class SignUpView extends StatelessWidget {
           AppTextfield(
             validator: (value) {
               if (value!.isEmpty) {
-                return Validate.validateName(value.toString());
+                return 'Name is required';
               }
               return null;
             },
             controller: viewModel.nameController,
             hintText: "Name",
             width: double.infinity,
-          ),
-          verticalspaceBetween,
-          AppTextfield(
-            controller: viewModel.userNameController,
-            hintText: "Username",
-            width: double.infinity,
-            validator: (value) {
-              if (value!.isEmpty) {
-                return "Field is required";
-              }
-              return null;
-            },
           ),
           verticalspaceBetween,
           AppTextfield(
@@ -136,7 +123,10 @@ class SignUpView extends StatelessWidget {
           AppTextfield(
             validator: (value) {
               if (value!.isEmpty) {
-                return Validate.validatePassword(value.toString());
+                return 'Password is required';
+              }
+              if (value.length < 8) {
+                return 'Password must be at least 8 characters long';
               }
               return null;
             },
@@ -156,7 +146,10 @@ class SignUpView extends StatelessWidget {
           AppTextfield(
             validator: (value) {
               if (value!.isEmpty) {
-                return Validate.validatePhone(value.toString());
+                return 'Phone number is required';
+              }
+              if (!RegExp(r'^[0-9]{10}$').hasMatch(value)) {
+                return 'Please enter a valid phone number';
               }
               return null;
             },
@@ -171,7 +164,7 @@ class SignUpView extends StatelessWidget {
             text: "Create Account",
             onTap: () async {
               await viewModel.submit(viewModel.emailController.text.toString(),
-                  viewModel.passwordController.text.toString());
+                  viewModel.passwordController.text.toString(), context);
             },
           ),
         ],

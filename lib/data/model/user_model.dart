@@ -4,7 +4,6 @@ class UserModel {
   final String name;
   final String email;
   final String password;
-  final String username;
   final String number;
 
   UserModel({
@@ -12,7 +11,6 @@ class UserModel {
     required this.email,
     required this.password,
     required this.number,
-    required this.username,
   });
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
@@ -21,20 +19,14 @@ class UserModel {
       email: map['email'] as String,
       password: map['password'] as String,
       number: map['number'] as String,
-      username: map['username'] as String,
     );
   }
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({
-      'name': name,
-      'email': email,
-      'password': password,
-      'username': username,
-      'number': number
-    });
+    result.addAll(
+        {'name': name, 'email': email, 'password': password, 'number': number});
 
     return result;
   }

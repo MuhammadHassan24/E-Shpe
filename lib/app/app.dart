@@ -1,5 +1,7 @@
 import 'package:ecommerceapp/services/cart_services.dart';
 import 'package:ecommerceapp/services/firebase_DB_services.dart';
+import 'package:ecommerceapp/services/stripe_services.dart';
+import 'package:ecommerceapp/view/screens/address/address_view.dart';
 import 'package:ecommerceapp/view/screens/auth/login/login_view.dart';
 import 'package:ecommerceapp/view/screens/auth/singup/signup_view.dart';
 import 'package:ecommerceapp/view/bottomnavigation/navigationbar_view.dart';
@@ -28,10 +30,13 @@ import 'package:stacked_services/stacked_services.dart';
   MaterialRoute(page: CategoryView),
   MaterialRoute(page: CheckOutView),
   MaterialRoute(page: ProfileView),
-  MaterialRoute(page: SettingsView)
+  MaterialRoute(page: SettingsView),
+  MaterialRoute(page: AddressView),
 ], dependencies: [
   Singleton(classType: NavigationService),
   Singleton(classType: FirebaseDbServices),
   Singleton(classType: CartServices),
+  Singleton(classType: SavedAddressService),
+  Singleton(classType: StripeServices)
 ])
 class App {}
