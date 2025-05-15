@@ -104,6 +104,7 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
 flutter_launcher_icons:
-  android: "launcher_icon"
+  android: true
   ios: true
   image_path: "asset/icon/app_icon.png"
+  remove_alpha_ios: true
