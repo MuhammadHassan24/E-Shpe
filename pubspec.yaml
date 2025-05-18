@@ -60,7 +60,6 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   stacked_generator: 
   build_runner: ^2.4.13
-  flutter_launcher_icons: ^0.14.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -102,9 +101,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: "asset/icon/app_icon.png"
-  remove_alpha_ios: true

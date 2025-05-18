@@ -198,6 +198,7 @@ class ProfileView extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                     ),
                                     AppText(
+
                                       text: data?.number ?? 'Loading...',
                                       fontSize: 16,
                                     )

@@ -19,7 +19,7 @@ class CheckOutView extends StatelessWidget {
     return ViewModelBuilder.reactive(
         viewModelBuilder: () => CheckoutViewModel(),
         onViewModelReady: (viewModel) async {
-          await viewModel.getSelectedAdress();
+          await viewModel.getSelectedAddress();
         },
         builder: (_, viewModel, child) {
           UserModel? data = viewModel.data;
@@ -145,7 +145,7 @@ class CheckOutView extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                               AppText(
-                                text: "\$${subTotal}",
+                                text: "\$$subTotal",
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),

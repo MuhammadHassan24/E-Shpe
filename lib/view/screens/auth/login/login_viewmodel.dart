@@ -22,13 +22,17 @@ class LoginViewModel extends BaseViewModel {
 
   submit(email, password) async {
     if (formKey.currentState!.validate()) {
+      setBusy(true);
       await login(email, password);
-      navigator.navigateTo(Routes.navigationBarView);
+      setBusy(false);
+      navigator.clearStackAndShow(Routes.navigationBarView);
     }
   }
 
   login(email, password) async {
     await _firebaseAuth.login(email, password);
+    emailController.clear();
+    passwordController.clear();
   }
 
   navigateToSignUp() {

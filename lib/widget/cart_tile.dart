@@ -10,8 +10,7 @@ class CartTile extends StatefulWidget {
   final VoidCallback? onTap;
   final VoidCallback? onAdd;
   final VoidCallback? onRemove;
-  const CartTile({
-    Key? key,
+  const CartTile({super.key,
     required this.data,
     required this.onDelete,
     this.onAdd,

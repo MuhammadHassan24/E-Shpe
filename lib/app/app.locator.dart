@@ -10,7 +10,7 @@ import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/cart_services.dart';
-import '../services/firebase_DB_services.dart';
+import '../services/firebase_db_services.dart';
 import '../services/stripe_services.dart';
 
 final locator = StackedLocator.instance;

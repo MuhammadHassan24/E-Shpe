@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
 import 'package:ecommerceapp/view/screens/auth/login/login_viewmodel.dart';
 import 'package:ecommerceapp/widget/app_button.dart';
@@ -17,72 +18,75 @@ class LoginView extends StatelessWidget {
         final isLandscape =
             MediaQuery.of(context).orientation == Orientation.landscape;
 
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: Padding(
-            padding: const EdgeInsets.only(top: 85, left: 15, right: 15),
-            child: SingleChildScrollView(
-              physics: isLandscape
-                  ? const AlwaysScrollableScrollPhysics()
-                  : const NeverScrollableScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  verticalSpaceSmall,
-                  const AppText(
-                    text: "Welcome back to \nE-Shop",
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    textAlign: TextAlign.start,
-                  ),
-                  verticalSpaceTiny,
-                  const AppText(
-                    text:
-                        "Discover Limitless Choices And Unmatched\nConvenience",
-                    fontSize: 16,
-                    color: Colors.black38,
-                  ),
-                  verticalSpaceMedium,
-                  Center(child: _buildForm(viewModel)),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  const Center(
-                      child: AppText(text: "Or Sign in With", fontSize: 13)),
-                  verticalSpaceSmall,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 20,
-                    children: [
-                      Container(
-                        height: 37,
-                        width: 37,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(100),
+        return SafeArea(
+          top: false,
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            body: Padding(
+              padding: const EdgeInsets.only(top: 85, left: 15, right: 15),
+              child: SingleChildScrollView(
+                physics: isLandscape
+                    ? const AlwaysScrollableScrollPhysics()
+                    : const NeverScrollableScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    verticalSpaceSmall,
+                    const AppText(
+                      text: "Welcome back to \nE-Shop",
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      textAlign: TextAlign.start,
+                    ),
+                    verticalSpaceTiny,
+                    const AppText(
+                      text:
+                          "Discover Limitless Choices And Unmatched\nConvenience",
+                      fontSize: 16,
+                      color: Colors.black38,
+                    ),
+                    verticalSpaceMedium,
+                    Center(child: _buildForm(viewModel)),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    const Center(
+                        child: AppText(text: "Or Sign in With", fontSize: 13)),
+                    verticalSpaceSmall,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: 20,
+                      children: [
+                        Container(
+                          height: 37,
+                          width: 37,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Image.asset(
+                            "asset/images/google.png",
+                            fit: BoxFit.cover,
+                            scale: 1.5,
+                          ),
                         ),
-                        child: Image.asset(
-                          "asset/images/google.png",
-                          fit: BoxFit.cover,
-                          scale: 1.5,
+                        Container(
+                          height: 38,
+                          width: 38,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Icon(
+                            Icons.facebook,
+                            color: Colors.blue[800],
+                            // size: 30,
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 38,
-                        width: 38,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Icon(
-                          Icons.facebook,
-                          color: Colors.blue[800],
-                          // size: 30,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -149,14 +153,50 @@ class LoginView extends StatelessWidget {
             const SizedBox(
               height: 45,
             ),
-            AppButton(
-                onTap: () async {
-                  await viewModel.submit(viewModel.emailController.text,
-                      viewModel.passwordController.text);
-                },
-                text: "Login",
-                height: 55,
-                width: double.infinity),
+            GestureDetector(
+              onTap: () async {
+                await viewModel.submit(viewModel.emailController.text,
+                    viewModel.passwordController.text);
+              },
+              child: Container(
+                  height: 55,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: viewModel.isBusy
+                          ? AppColors.primaryColor.withValues(
+                              alpha: 0.7,
+                            )
+                          : AppColors.primaryColor),
+                  child: Center(
+                      child: viewModel.isBusy
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              spacing: 8,
+                              children: [
+                                Transform.scale(
+                                  scale: 0.5,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Text(
+                                  "Login...",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            )
+                          : Text(
+                              "Login",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ))),
+            ),
             verticalspaceBetween,
             AppButton(
                 onTap: () {

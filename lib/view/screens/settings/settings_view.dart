@@ -70,7 +70,12 @@ class SettingsView extends StatelessWidget {
                     right: 0,
                     bottom: 0,
                     child: Container(
-                      padding: const EdgeInsets.only(left: 20, top: 20),
+                      padding: EdgeInsets.only(left: 20, top: 20),
+                      decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20))),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -88,16 +93,12 @@ class SettingsView extends StatelessWidget {
                             viewModel.navigateToaddress();
                           }),
                           _settingMenuTile(
-                              "My Cart",
-                              "Set shopping delivery address",
-                              const Icon(Icons.shopping_cart_outlined))
+                            "My Cart",
+                            "Set shopping delivery address",
+                            const Icon(Icons.shopping_cart_outlined),
+                          )
                         ],
                       ),
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
                     )),
                 const Positioned(
                   left: 0,

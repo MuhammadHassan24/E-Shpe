@@ -34,41 +34,38 @@ class AddressView extends StatelessWidget {
                     itemCount: viewModel.addresses.length,
                     itemBuilder: (_, index) {
                       final item = viewModel.addresses[index];
-                      return InkWell(
-                        onTap: () {
-                          viewModel.removeAddress(index);
-                        },
-                        child: Container(
-                          height: 90,
-                          width: 290,
-                          margin: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              RadioMenuButton<String>(
-                                value: item,
-                                groupValue: viewModel.groupValue,
-                                onChanged: (value) async {
-                                  viewModel.groupValue = value.toString();
-                                  await viewModel
-                                      .saveSelectedAddress(value.toString());
-                                  viewModel.rebuildUi();
-                                },
-                                child: SizedBox(
-                                  width: 285,
-                                  child: Text(
-                                    item.toString(),
-                                    maxLines: 2,
-                                  ),
+                      return Container(
+                        height: 90,
+                        width: 290,
+                        margin: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            RadioMenuButton<String>(
+                              value: item,
+                              groupValue: viewModel.groupValue,
+                              onChanged: (value) async {
+                                viewModel.groupValue = value.toString();
+                                await viewModel
+                                    .saveSelectedAddress(value.toString());
+                                viewModel.rebuildUi();
+                              },
+                              style: ButtonStyle(
+                                  splashFactory: NoSplash.splashFactory),
+                              child: SizedBox(
+                                width: 285,
+                                child: Text(
+                                  item.toString(),
+                                  maxLines: 2,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       );
                     }),

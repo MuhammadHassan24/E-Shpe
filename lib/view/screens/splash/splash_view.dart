@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/view/screens/splash/splash_viewmodel.dart';
+import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -11,11 +12,16 @@ class SplashView extends StatelessWidget {
       viewModelBuilder: () => SplashViewmodel(),
       onViewModelReady: (viewModel) => viewModel.initialize(),
       builder: (context, viewModel, child) {
-        return const Scaffold(
+        return Scaffold(
+          appBar: AppBar(
+            toolbarHeight: 0,
+          ),
           body: Center(
-              child: CircularProgressIndicator(
-            color: Colors.black,
-          )),
+              child: AppText(
+                  text: "E-Shop",
+                  color: Colors.black,
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold)),
         );
       },
     );

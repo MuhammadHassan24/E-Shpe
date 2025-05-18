@@ -1,5 +1,5 @@
+import 'package:ecommerceapp/resources/app_colors.dart';
 import 'package:ecommerceapp/resources/ui_helper.dart';
-import 'package:ecommerceapp/widget/app_button.dart';
 import 'package:ecommerceapp/widget/app_text.dart';
 import 'package:ecommerceapp/widget/app_textfield.dart';
 import 'package:flutter/material.dart';
@@ -17,67 +17,70 @@ class SignUpView extends StatelessWidget {
         final isLandscape =
             MediaQuery.of(context).orientation == Orientation.landscape;
 
-        return Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: AppBar(),
-          body: Padding(
-            padding: const EdgeInsets.only(left: 18, right: 18),
-            child: SingleChildScrollView(
-              physics: isLandscape
-                  ? const AlwaysScrollableScrollPhysics()
-                  : const NeverScrollableScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  verticalSpaceMedium,
-                  const AppText(
-                    text: "Let's create your account",
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  verticalSpaceMedium,
-                  _buildForm(viewModel, context),
-                  verticalSpaceMedium,
-                  const Center(
-                    child: AppText(
-                      text: "-----Or Sign up With-----",
-                      fontSize: 13,
+        return SafeArea(
+          top: false,
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            appBar: AppBar(),
+            body: Padding(
+              padding: const EdgeInsets.only(left: 18, right: 18),
+              child: SingleChildScrollView(
+                physics: isLandscape
+                    ? const AlwaysScrollableScrollPhysics()
+                    : const NeverScrollableScrollPhysics(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    verticalSpaceMedium,
+                    const AppText(
+                      text: "Let's create your account",
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  verticalSpaceSmall,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 20,
-                    children: [
-                      Container(
-                        height: 37,
-                        width: 37,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Image.asset(
-                          "asset/images/google.png",
-                          fit: BoxFit.cover,
-                          scale: 1.5,
-                        ),
+                    verticalSpaceMedium,
+                    _buildForm(viewModel, context),
+                    verticalSpaceMedium,
+                    const Center(
+                      child: AppText(
+                        text: "-----Or Sign up With-----",
+                        fontSize: 13,
                       ),
-                      Container(
-                        height: 38,
-                        width: 38,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black12),
-                          borderRadius: BorderRadius.circular(100),
+                    ),
+                    verticalSpaceSmall,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: 20,
+                      children: [
+                        Container(
+                          height: 37,
+                          width: 37,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Image.asset(
+                            "asset/images/google.png",
+                            fit: BoxFit.cover,
+                            scale: 1.5,
+                          ),
                         ),
-                        child: Icon(
-                          Icons.facebook,
-                          color: Colors.blue[800],
-                          // size: 30,
+                        Container(
+                          height: 38,
+                          width: 38,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black12),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Icon(
+                            Icons.facebook,
+                            color: Colors.blue[800],
+                            // size: 30,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -158,15 +161,51 @@ class SignUpView extends StatelessWidget {
             width: double.infinity,
           ),
           verticalSpaceLarge,
-          AppButton(
-            height: 55,
-            width: double.infinity,
-            text: "Create Account",
+          GestureDetector(
             onTap: () async {
-              await viewModel.submit(viewModel.emailController.text.toString(),
-                  viewModel.passwordController.text.toString(), context);
+              await viewModel.submit(viewModel.emailController.text,
+                  viewModel.passwordController.text,
+                  context: context);
             },
-          ),
+            child: Container(
+                height: 55,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: viewModel.isBusy
+                        ? AppColors.primaryColor.withValues(
+                            alpha: 0.7,
+                          )
+                        : AppColors.primaryColor),
+                child: Center(
+                    child: viewModel.isBusy
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            spacing: 8,
+                            children: [
+                              Transform.scale(
+                                scale: 0.5,
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                "please wait...",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )
+                        : Text(
+                            "Create Account",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ))),
+          )
         ],
       ),
     );

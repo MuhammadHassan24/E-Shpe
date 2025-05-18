@@ -1,5 +1,5 @@
 import 'package:ecommerceapp/services/cart_services.dart';
-import 'package:ecommerceapp/services/firebase_DB_services.dart';
+import 'package:ecommerceapp/services/firebase_db_services.dart';
 import 'package:ecommerceapp/services/stripe_services.dart';
 import 'package:ecommerceapp/view/screens/address/address_view.dart';
 import 'package:ecommerceapp/view/screens/auth/login/login_view.dart';
