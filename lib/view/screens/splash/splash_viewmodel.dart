@@ -26,10 +26,11 @@ class SplashViewmodel extends BaseViewModel {
   Future<void> _validateFirebaseAuthState() async {
     try {
       // Get the current user from local cache
+
       final User? currentUser = _auth.currentUser;
 
       // If there's no user, nothing to validate
-      if (currentUser == null) {
+      if (currentUser == null && currentUser!.isAnonymous) {
         log("No cached user found in Firebase Auth");
         return;
       }
@@ -66,16 +67,39 @@ class SplashViewmodel extends BaseViewModel {
 
   Future<void> checkOnboardSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Alternative approach: Check for a unique app installation identifier
+    String? installId = prefs.getString('install_id');
+
+    // Get onboarding status
     bool seen = (prefs.getBool('onboard') ?? false);
 
-    if (seen) {
-      // Check the current auth state
-      checkAuthAndNavigate();
-    } else {
-      log("First time user, showing onboarding");
+    log("Install ID: $installId");
+    log("Onboard seen: $seen");
+
+    // If no install ID exists, this is a fresh install
+    if (installId == null) {
+      // Generate a unique install ID for this installation
+      String newInstallId = DateTime.now().millisecondsSinceEpoch.toString();
+      await prefs.setString('install_id', newInstallId);
+
+      log("Fresh install detected, showing onboarding");
       await prefs.setBool('onboard', true);
       navigateToOnboard();
+      return;
     }
+
+    // If install ID exists but onboard not seen, something went wrong - show onboard
+    if (!seen) {
+      log("Install ID exists but onboard not seen, showing onboarding");
+      await prefs.setBool('onboard', true);
+      navigateToOnboard();
+      return;
+    }
+
+    // Both install ID and onboard flag exist - proceed to auth check
+    log("Returning user, checking auth state");
+    checkAuthAndNavigate();
   }
 
 // Check auth state once and navigate accordingly
@@ -84,8 +108,8 @@ class SplashViewmodel extends BaseViewModel {
     final User? currentUser = _auth.currentUser;
 
     if (currentUser == null) {
-      log("User not authenticated, navigating to Onboard");
-      navigateToOnboard();
+      log("User not authenticated, navigating to login");
+      navigateToLogin();
     } else {
       // We already validated the user in _validateFirebaseAuthState,
       // so if we still have a currentUser here, it should be valid
@@ -102,7 +126,7 @@ class SplashViewmodel extends BaseViewModel {
     _auth.authStateChanges().listen((User? user) {
       if (user == null) {
         log("Auth state changed: User signed out, navigating to login");
-        navigateToLogin();
+        navigateToOnboard();
       }
       // We don't navigate to navbar here to avoid disrupting the user
       // if they're already using the app

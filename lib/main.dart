@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerceapp/app/app.locator.dart';
 import 'package:ecommerceapp/app/app.router.dart';
 import 'package:ecommerceapp/firebase_options.dart';
@@ -12,6 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseFirestore.instance.clearPersistence();
   Stripe.publishableKey = StripeServices.stripePublishableKey;
   await setupLocator();
   runApp(const MyApp());

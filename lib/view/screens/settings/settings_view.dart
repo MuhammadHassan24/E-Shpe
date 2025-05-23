@@ -96,19 +96,42 @@ class SettingsView extends StatelessWidget {
                             "My Cart",
                             "Set shopping delivery address",
                             const Icon(Icons.shopping_cart_outlined),
+                          ),
+                          _settingMenuTile(
+                            "My Orders",
+                            "In progress and completed orders",
+                            Icon(Icons.my_library_books_outlined),
+                          ),
+                          _settingMenuTile(
+                            "My Coupons",
+                            "List of all the discounted coupons",
+                            const Icon(Icons.discount_outlined),
+                          ),
+                          _settingMenuTile(
+                            "Notofication",
+                            "Set any kind of notification message",
+                            const Icon(Icons.notifications_none_rounded),
+                          ),
+                          _settingMenuTile(
+                            "Account Privacy",
+                            "Manage data usage and connected accounts",
+                            const Icon(Icons.privacy_tip_outlined),
                           )
                         ],
                       ),
                     )),
-                const Positioned(
+                Positioned(
                   left: 0,
                   top: 40,
                   right: -300,
                   // bottom: -10,
-                  child: Icon(
-                    Icons.edit_sharp,
-                    color: Colors.black38,
-                    size: 22,
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.edit_sharp,
+                      color: Colors.black38,
+                      size: 22,
+                    ),
                   ),
                 )
               ],

@@ -71,7 +71,7 @@ class DetailView extends StatelessWidget {
                           ],
                         ),
                         verticalSpaceSmall,
-                        AppText(text: data.description, fontSize: 18),
+                        Text(data.description, style: TextStyle(fontSize: 17)),
                         verticalSpaceMedium,
                         AppText(
                           text: "\$ ${data.price.toString()}",
@@ -95,7 +95,8 @@ class DetailView extends StatelessWidget {
                                 SizedBox(
                                   width: 30,
                                   child: GestureDetector(
-                                      onTap: () {}, child: const Icon(Icons.remove)),
+                                      onTap: () {},
+                                      child: const Icon(Icons.remove)),
                                 ),
                                 Container(
                                   width: 30,

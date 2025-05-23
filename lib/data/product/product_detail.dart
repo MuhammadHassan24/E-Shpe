@@ -6,7 +6,7 @@ List<Product> electronic = [
     'name': 'Smart TV',
     'price': 500,
     'description':
-        '55-inch 4K UHD Smart TV\nEnjoy crystal-clear visuals and streaming.',
+        '55-inch 4K UHD Smart TV Enjoy crystal-clear visuals and streaming.',
     "image": "asset/images/smart_tv.png",
     'quantity': 4
   },
@@ -14,7 +14,7 @@ List<Product> electronic = [
     'name': 'Laptop',
     'price': 850,
     'description':
-        'Core i5, 8GB RAM, 256GB SSD\nIdeal for work, study, and entertainment.',
+        'Core i5, 8GB RAM, 256GB SSD Ideal for work, study, and entertainment.',
     "image": "asset/images/laptop.png",
     'quantity': 4
   },
@@ -22,7 +22,7 @@ List<Product> electronic = [
     'name': 'Bluetooth Speaker',
     'price': 120,
     'description':
-        'Portable with powerful bass\nClear sound with deep bass, easy to carry.',
+        'Portable with powerful bass Clear sound with deep bass, easy to carry.',
     "image": "asset/images/speaker.png",
     'quantity': 4
   },
@@ -30,7 +30,7 @@ List<Product> electronic = [
     'name': 'Smart Watch',
     'price': 150,
     'description':
-        'Tracks fitness and notifications\nStay connected and monitor your health.',
+        'Tracks fitness and notifications Stay connected and monitor your health.',
     "image": "asset/images/smart_watch.png",
     'quantity': 4
   },
@@ -38,7 +38,7 @@ List<Product> electronic = [
     'name': 'Headphones',
     'price': 80,
     'description':
-        'Wireless, noise-cancelling\nEnjoy music without distractions.',
+        'Wireless, noise-cancelling Enjoy music without distractions.',
     "image": "asset/images/headphones.webp",
     'quantity': 4
   },
@@ -46,7 +46,7 @@ List<Product> electronic = [
     'name': 'Gaming Console',
     'price': 400,
     'description':
-        'Supports 4K gaming\nPlay your favorite games in high resolution.',
+        'Supports 4K gaming Play your favorite games in high resolution.',
     "image": "asset/images/ps4.webp",
     'quantity': 4
   },
@@ -57,7 +57,7 @@ List<Product> accessories = [
     'name': 'Wristwatch',
     'price': 70,
     'description':
-        'Classic analog design\nStylish timepiece for every occasion.',
+        'Classic analog design Stylish timepiece for every occasion.',
     "image": "asset/images/watch.png",
     'quantity': 4
   },
@@ -65,7 +65,7 @@ List<Product> accessories = [
     'name': 'Backpack',
     'price': 50,
     'description':
-        'Water-resistant and spacious\nStore your essentials safely and conveniently.',
+        'Water-resistant and spacious Store your essentials safely and conveniently.',
     "image": "asset/images/bag.png",
     'quantity': 4
   },
@@ -73,14 +73,14 @@ List<Product> accessories = [
     'name': 'Wallet',
     'price': 30,
     'description':
-        'Leather, slim design\nSleek, practical wallet for everyday use.',
+        'Leather, slim design Sleek, practical wallet for everyday use.',
     "image": "asset/images/valed.webp",
     'quantity': 4
   },
   {
     'name': 'Belt',
     'price': 20,
-    'description': 'Adjustable, durable\nPerfect fit, designed to last.',
+    'description': 'Adjustable, durable Perfect fit, designed to last.',
     "image": "asset/images/balt.webp",
     'quantity': 4
   },
@@ -88,7 +88,7 @@ List<Product> accessories = [
     'name': 'Cap',
     'price': 10,
     'description':
-        'Adjustable, breathable\nComfortable and stylish for sunny days.',
+        'Adjustable, breathable Comfortable and stylish for sunny days.',
     "image": "asset/images/cap.png",
     'quantity': 4
   },
@@ -96,7 +96,7 @@ List<Product> accessories = [
     'name': 'Gloves',
     'price': 18,
     'description':
-        'Warm and touchscreen compatible\nKeep hands warm without losing touch.',
+        'Warm and touchscreen compatible Keep hands warm without losing touch.',
     "image": "asset/images/hand_gloves.png",
     'quantity': 4
   },
@@ -107,7 +107,7 @@ List<Product> fashion = [
     'name': 'T-Shirt',
     'price': 15,
     'description':
-        'Cotton, breathable fabric\nComfortable and casual for all-day wear.',
+        'Cotton, breathable fabric Comfortable and casual for all-day wear.',
     "image": "asset/images/shirt.png",
     'quantity': 4
   },
@@ -115,7 +115,7 @@ List<Product> fashion = [
     'name': 'Jeans',
     'price': 40,
     'description':
-        'Slim-fit, durable material\nA stylish wardrobe essential for every look.',
+        'Slim-fit, durable material A stylish wardrobe essential for every look.',
     "image": "asset/images/jeans.png",
     'quantity': 4
   },
@@ -123,7 +123,7 @@ List<Product> fashion = [
     'name': 'Jacket',
     'price': 60,
     'description':
-        'Waterproof, stylish design\nStay dry and fashionable in any weather.',
+        'Waterproof, stylish design Stay dry and fashionable in any weather.',
     "image": "asset/images/jaket.png",
     'quantity': 4
   },
@@ -131,21 +131,21 @@ List<Product> fashion = [
     'name': 'Sneakers',
     'price': 50,
     'description':
-        'Comfortable for daily wear\nPerfect for everyday adventures and comfort.',
+        'Comfortable for daily wear Perfect for everyday adventures and comfort.',
     "image": "asset/images/shoes.webp",
     'quantity': 4
   },
   {
     'name': 'Dress',
     'price': 80,
-    'description': 'Elegant evening wear\nA chic dress for special occasions.',
+    'description': 'Elegant evening wear A chic dress for special occasions.',
     "image": "asset/images/dress.png",
     'quantity': 4
   },
   {
     'name': 'Hoodie',
     'price': 35,
-    'description': 'Warm and cozy\nA comfortable layer for chilly days.',
+    'description': 'Warm and cozy A comfortable layer for chilly days.',
     "image": "asset/images/hoddie.png",
     'quantity': 4
   },
@@ -156,14 +156,14 @@ List<Product> phone = [
     'name': 'iPhone 14',
     'price': 999,
     'description':
-        '128GB, A15 Bionic chip\nPowerful performance and smooth experience.',
+        '128GB, A15 Bionic chip Powerful performance and smooth experience.',
     "image": "asset/images/iphone.png",
     'quantity': 4
   },
   {
     'name': 'Samsung Galaxy S23',
     'price': 899,
-    'description': 'AMOLED display, 256GB\nStunning visuals and ample storage.',
+    'description': 'AMOLED display, 256GB Stunning visuals and ample storage.',
     "image": "asset/images/galaxys23.webp",
     'quantity': 4
   },
@@ -171,15 +171,14 @@ List<Product> phone = [
     'name': 'OnePlus 11',
     'price': 699,
     'description':
-        'Snapdragon 8 Gen 2, 12GB RAM\nHigh performance for gaming and multitasking.',
+        'Snapdragon 8 Gen 2, 12GB RAM High performance for gaming and multitasking.',
     "image": "asset/images/oneplus-11.webp",
     'quantity': 4
   },
   {
     'name': 'Google Pixel 8',
     'price': 799,
-    'description':
-        '128GB, excellent camera\nCapture stunning photos with ease.',
+    'description': '128GB, excellent camera Capture stunning photos with ease.',
     "image": "asset/images/GooglePixel8.png",
     'quantity': 4
   },
@@ -187,7 +186,7 @@ List<Product> phone = [
     'name': 'Redmi Note 12',
     'price': 250,
     'description':
-        'Affordable, long battery life\nBudget-friendly with lasting performance.',
+        'Affordable, long battery life Budget-friendly with lasting performance.',
     "image": "asset/images/redmi.png",
     'quantity': 4
   },
@@ -195,7 +194,7 @@ List<Product> phone = [
     'name': 'Realme GT Neo 5',
     'price': 300,
     'description':
-        'Flagship specs at budget price\nPerformance-packed, value-for-money smartphone.',
+        'Flagship specs at budget price Performance-packed, value-for-money smartphone.',
     "image": "asset/images/realmegtneo.webp",
     'quantity': 4
   },
@@ -206,7 +205,7 @@ List<Product> sports = [
     'name': 'Football',
     'price': 25,
     'description':
-        'Official size and weight\nPerfect for serious play and training.',
+        'Official size and weight Perfect for serious play and training.',
     "image": "asset/images/footballs.png",
     'quantity': 4
   },
@@ -214,15 +213,14 @@ List<Product> sports = [
     'name': 'Cricket Bat',
     'price': 50,
     'description':
-        'Made of Kashmir willow\nLightweight and perfect for cricket enthusiasts.',
+        'Made of Kashmir willow Lightweight and perfect for cricket enthusiasts.',
     "image": "asset/images/bat.png",
     'quantity': 4
   },
   {
     'name': 'Basketball',
     'price': 30,
-    'description':
-        'Indoor/outdoor use\nDurable ball for high-performance play.',
+    'description': 'Indoor/outdoor use Durable ball for high-performance play.',
     "image": "asset/images/backet_ball.png",
     'quantity': 4
   },
@@ -230,7 +228,7 @@ List<Product> sports = [
     'name': 'Running Shoes',
     'price': 80,
     'description':
-        'Comfortable and durable\nBuilt for long-lasting comfort during runs.',
+        'Comfortable and durable Built for long-lasting comfort during runs.',
     "image": "asset/images/sports_shoes.png",
     'quantity': 4
   },
@@ -253,7 +251,7 @@ List<Category> categories = [
         'name': 'iPhone 14',
         'price': 999,
         'description':
-            '128GB, A15 Bionic chip\nPowerful performance and smooth experience.',
+            '128GB, A15 Bionic chip Powerful performance and smooth experience.',
         "image": "asset/images/iphone.png",
         'quantity': 4
       },
@@ -261,7 +259,7 @@ List<Category> categories = [
         'name': 'Samsung Galaxy S23',
         'price': 899,
         'description':
-            'AMOLED display, 256GB\nStunning visuals and ample storage.',
+            'AMOLED display, 256GB Stunning visuals and ample storage.',
         "image": "asset/images/galaxys23.webp",
         'quantity': 4
       },
@@ -269,7 +267,7 @@ List<Category> categories = [
         'name': 'OnePlus 11',
         'price': 699,
         'description':
-            'Snapdragon 8 Gen 2, 12GB RAM\nHigh performance for gaming and multitasking.',
+            'Snapdragon 8 Gen 2, 12GB RAM High performance for gaming and multitasking.',
         "image": "asset/images/oneplus-11.webp",
         'quantity': 4
       },
@@ -277,7 +275,7 @@ List<Category> categories = [
         'name': 'Google Pixel 8',
         'price': 799,
         'description':
-            '128GB, excellent camera\nCapture stunning photos with ease.',
+            '128GB, excellent camera Capture stunning photos with ease.',
         "image": "asset/images/GooglePixel8.png",
         'quantity': 4
       },
@@ -285,7 +283,7 @@ List<Category> categories = [
         'name': 'Redmi Note 12',
         'price': 250,
         'description':
-            'Affordable, long battery life\nBudget-friendly with lasting performance.',
+            'Affordable, long battery life Budget-friendly with lasting performance.',
         "image": "asset/images/redmi.png",
         'quantity': 4
       },
@@ -293,7 +291,7 @@ List<Category> categories = [
         'name': 'Realme GT Neo 5',
         'price': 300,
         'description':
-            'Flagship specs at budget price\nPerformance-packed, value-for-money smartphone.',
+            'Flagship specs at budget price Performance-packed, value-for-money smartphone.',
         "image": "asset/images/realmegtneo.webp",
         'quantity': 4
       },
@@ -307,7 +305,7 @@ List<Category> categories = [
         'name': 'Wristwatch',
         'price': 70,
         'description':
-            'Classic analog design\nStylish timepiece for every occasion.',
+            'Classic analog design Stylish timepiece for every occasion.',
         "image": "asset/images/watch.png",
         'quantity': 4
       },
@@ -315,7 +313,7 @@ List<Category> categories = [
         'name': 'Backpack',
         'price': 50,
         'description':
-            'Water-resistant and spacious\nStore your essentials safely and conveniently.',
+            'Water-resistant and spacious Store your essentials safely and conveniently.',
         "image": "asset/images/bag.png",
         'quantity': 4
       },
@@ -323,14 +321,14 @@ List<Category> categories = [
         'name': 'Wallet',
         'price': 30,
         'description':
-            'Leather, slim design\nSleek, practical wallet for everyday use.',
+            'Leather, slim design Sleek, practical wallet for everyday use.',
         "image": "asset/images/valed.webp",
         'quantity': 4
       },
       {
         'name': 'Belt',
         'price': 20,
-        'description': 'Adjustable, durable\nPerfect fit, designed to last.',
+        'description': 'Adjustable, durable Perfect fit, designed to last.',
         "image": "asset/images/balt.webp",
         'quantity': 4
       },
@@ -338,7 +336,7 @@ List<Category> categories = [
         'name': 'Cap',
         'price': 10,
         'description':
-            'Adjustable, breathable\nComfortable and stylish for sunny days.',
+            'Adjustable, breathable Comfortable and stylish for sunny days.',
         "image": "asset/images/cap.png",
         'quantity': 4
       },
@@ -346,7 +344,7 @@ List<Category> categories = [
         'name': 'Gloves',
         'price': 18,
         'description':
-            'Warm and touchscreen compatible\nKeep hands warm without losing touch.',
+            'Warm and touchscreen compatible Keep hands warm without losing touch.',
         "image": "asset/images/hand_gloves.png",
         'quantity': 4
       },
@@ -360,7 +358,7 @@ List<Category> categories = [
         'name': 'T-Shirt',
         'price': 15,
         'description':
-            'Cotton, breathable fabric\nComfortable and casual for all-day wear.',
+            'Cotton, breathable fabric Comfortable and casual for all-day wear.',
         "image": "asset/images/shirt.png",
         'quantity': 4
       },
@@ -368,7 +366,7 @@ List<Category> categories = [
         'name': 'Jeans',
         'price': 40,
         'description':
-            'Slim-fit, durable material\nA stylish wardrobe essential for every look.',
+            'Slim-fit, durable material A stylish wardrobe essential for every look.',
         "image": "asset/images/jeans.png",
         'quantity': 4
       },
@@ -376,7 +374,7 @@ List<Category> categories = [
         'name': 'Jacket',
         'price': 60,
         'description':
-            'Waterproof, stylish design\nStay dry and fashionable in any weather.',
+            'Waterproof, stylish design Stay dry and fashionable in any weather.',
         "image": "asset/images/jaket.png",
         'quantity': 4
       },
@@ -384,7 +382,7 @@ List<Category> categories = [
         'name': 'Sneakers',
         'price': 50,
         'description':
-            'Comfortable for daily wear\nPerfect for everyday adventures and comfort.',
+            'Comfortable for daily wear Perfect for everyday adventures and comfort.',
         "image": "asset/images/shoes.webp",
         'quantity': 4
       },
@@ -392,14 +390,14 @@ List<Category> categories = [
         'name': 'Dress',
         'price': 80,
         'description':
-            'Elegant evening wear\nA chic dress for special occasions.',
+            'Elegant evening wear A chic dress for special occasions.',
         "image": "asset/images/dress.png",
         'quantity': 4
       },
       {
         'name': 'Hoodie',
         'price': 35,
-        'description': 'Warm and cozy\nA comfortable layer for chilly days.',
+        'description': 'Warm and cozy A comfortable layer for chilly days.',
         "image": "asset/images/hoddie.png",
         'quantity': 4
       },
@@ -413,7 +411,7 @@ List<Category> categories = [
         'name': 'Smart TV',
         'price': 500,
         'description':
-            '55-inch 4K UHD Smart TV\nEnjoy crystal-clear visuals and streaming.',
+            '55-inch 4K UHD Smart TV Enjoy crystal-clear visuals and streaming.',
         "image": "asset/images/smart_tv.png",
         'quantity': 4
       },
@@ -421,7 +419,7 @@ List<Category> categories = [
         'name': 'Laptop',
         'price': 850,
         'description':
-            'Core i5, 8GB RAM, 256GB SSD\nIdeal for work, study, and entertainment.',
+            'Core i5, 8GB RAM, 256GB SSD Ideal for work, study, and entertainment.',
         "image": "asset/images/laptop.png",
         'quantity': 4
       },
@@ -429,7 +427,7 @@ List<Category> categories = [
         'name': 'Bluetooth Speaker',
         'price': 120,
         'description':
-            'Portable with powerful bass\nClear sound with deep bass, easy to carry.',
+            'Portable with powerful bass Clear sound with deep bass, easy to carry.',
         "image": "asset/images/speaker.png",
         'quantity': 4
       },
@@ -437,7 +435,7 @@ List<Category> categories = [
         'name': 'Smart Watch',
         'price': 150,
         'description':
-            'Tracks fitness and notifications\nStay connected and monitor your health.',
+            'Tracks fitness and notifications Stay connected and monitor your health.',
         "image": "asset/images/smart_watch.png",
         'quantity': 4
       },
@@ -445,7 +443,7 @@ List<Category> categories = [
         'name': 'Headphones',
         'price': 80,
         'description':
-            'Wireless, noise-cancelling\nEnjoy music without distractions.',
+            'Wireless, noise-cancelling Enjoy music without distractions.',
         "image": "asset/images/headphones.webp",
         'quantity': 4
       },
@@ -453,7 +451,7 @@ List<Category> categories = [
         'name': 'Gaming Console',
         'price': 400,
         'description':
-            'Supports 4K gaming\nPlay your favorite games in high resolution.',
+            'Supports 4K gaming Play your favorite games in high resolution.',
         "image": "asset/images/ps4.webp",
         'quantity': 4
       },
@@ -467,7 +465,7 @@ List<Category> categories = [
         'name': 'Football',
         'price': 25,
         'description':
-            'Official size and weight\nPerfect for serious play and training.',
+            'Official size and weight Perfect for serious play and training.',
         "image": "asset/images/footballs.png",
         'quantity': 4
       },
@@ -475,7 +473,7 @@ List<Category> categories = [
         'name': 'Cricket Bat',
         'price': 50,
         'description':
-            'Made of Kashmir willow\nLightweight and perfect for cricket enthusiasts.',
+            'Made of Kashmir willow Lightweight and perfect for cricket enthusiasts.',
         "image": "asset/images/bat.png",
         'quantity': 4
       },
@@ -483,7 +481,7 @@ List<Category> categories = [
         'name': 'Basketball',
         'price': 30,
         'description':
-            'Indoor/outdoor use\nDurable ball for high-performance play.',
+            'Indoor/outdoor use Durable ball for high-performance play.',
         "image": "asset/images/backet_ball.png",
         'quantity': 4
       },
@@ -491,7 +489,7 @@ List<Category> categories = [
         'name': 'Running Shoes',
         'price': 80,
         'description':
-            'Comfortable and durable\nBuilt for long-lasting comfort during runs.',
+            'Comfortable and durable Built for long-lasting comfort during runs.',
         "image": "asset/images/sports_shoes.png",
         'quantity': 4
       },
